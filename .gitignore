@@ -1,0 +1,8 @@
+**.pyc
+**.aux
+**.log
+**.synctex.gz
+.DS_Store
+**.toc
+**.t1
+report/Report.pdf
