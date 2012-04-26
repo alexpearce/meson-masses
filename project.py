@@ -9,7 +9,7 @@ from numpy import *
 # http://docs.scipy.org/doc/scipy/reference/generated/scipy.special.airy.html
 from scipy.special import airy
 # Import a few maths functions
-from math import pow
+from math import pow, factorial
 
 # Import our modules
 # from lib.module_name import *
@@ -77,8 +77,12 @@ def compare_airy_one(a = -14, b = 10, n = 100):
 
 def c_k(k):
   """Computes the coefficient c_k for integer k > 0"""
-  if k == 1: return 1
-  return 1.0
+  if isinstance(k, int) == False or k < 0: exit("k is not a positive integer")
+  if k == 0: return 1.0
+  two_k = 2*k
+  limit = 3*two_k - 1
+  
+  return (multiply.reduce(range(two_k+1, limit+1, 2)) / (pow(216, k)*factorial(k)))
 
 def airy_two(x, n = 10):
   """Computes the second approximation of Ai(x)"""
@@ -107,3 +111,7 @@ def airy_three(x, n):
     s_2[i] = pow(-1.0, i) * c_k((2*i) + 1) * pow(zeta, -((2*i) - 1))
   
   return prefactor * (sin(zeta + (pi/4.0))*sum(s_1) - cos(zeta + (pi/4.0))*sum(s_2))
+
+arr = [c_k(i) for i in range(0, 4)]
+plb.plot(arr)
+plb.show()
