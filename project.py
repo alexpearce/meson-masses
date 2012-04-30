@@ -89,6 +89,24 @@ def c_k(k):
   
   return (numerator / denominator)
 
+def c_k_arr(k):
+  """
+  Computes the first k+2 c_k coefficients for integer k > 1
+  Interestingly, this is correct for c_k k > 6, whereas c_k(k) is not
+  Good for about 14 dp up to c_k k > 9, not tested above this
+  """
+  c = range(k + 2)
+  c[0] = 1.0
+  c[1] = 3.0*5.0 / 216.0
+  for i in range(2, k+2):
+    six_i = 6.0*i
+    numerator = (six_i - 5)*(six_i - 3)*(six_i - 1)
+    denominator = 216.0 * i * ((2.0*i) - 1)
+    
+    c[i] = c[i-1] * (numerator/denominator)
+  
+  return c
+
 def airy_two(x, n = 10):
   """Computes the second approximation of Ai(x)"""
   zeta = (2.0/3.0) * pow(x, (3.0/2.0))
@@ -208,7 +226,3 @@ def ridders_method(f, x1, x2, xacc = 0.001):
     if f1 == 0: return x1
     if f2 == 0: return x2
     exit("No root found between x1 and x2.")
-
-rts = find_roots(-8, -3)
-for tup in rts:
-  print ridders_method(airy_one, tup[1], tup[0], 1e-7)
