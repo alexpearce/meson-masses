@@ -12,7 +12,7 @@ from scipy.special import airy
 from math import pow, factorial
 
 # Import our modules
-# from lib.module_name import *
+from lib.functions import *
 
 
 
@@ -109,8 +109,7 @@ def airy_three(x, n = 2):
   trig_arg = zeta + (pi/4.0)
   
   # Compute the first and second sum
-  s_1 = zeros(n)
-  s_2 = zeros(n)
+  s_1, s_2 = zeros(n), zeros(n)
   for i in range(n):
     s_1[i] = pow(-1.0, i) * c_k(2*i) * pow(zeta, -2.0*i)
     s_2[i] = pow(-1.0, i) * c_k((2*i) + 1) * pow(zeta, -(2*i) - 1)
@@ -119,14 +118,97 @@ def airy_three(x, n = 2):
 
 def nice_example():
   """A nice example of how the three approximations work together"""
-  a_one_rng = linspace(-15.5, 11, 1000)
-  a_two_rng = linspace(5, 20, 100)
-  a_three_rng = linspace(-20, -5, 1000)
-  a_one   = [airy_one(x) for x in a_one_rng]
-  a_two   = [airy_two(x) for x in a_two_rng]
+  # The ranges across which each approximation will act
+  a_one_rng   = linspace(-15, 11, 1000)
+  a_two_rng   = linspace(1,   20, 1000)
+  a_three_rng = linspace(-20, -1, 1000)
+
+  a_one   = [airy_one(x)   for x in a_one_rng]
+  a_two   = [airy_two(x)   for x in a_two_rng]
   a_three = [airy_three(x) for x in a_three_rng]
 
   plb.plot(a_one_rng, a_one)
   plb.plot(a_two_rng, a_two)
   plb.plot(a_three_rng, a_three)
   plb.show()
+  
+def find_roots(a, b, h = 0.01):
+  """
+  Returns tuples of (x_1, x_2), where between x_1 and x_2 Ai(x) = 0,
+  for Ai(x) between a and b, 'walking' along the function in steps of h
+  """
+  rng = arange(a, b, h)
+  # All the zeros are for x < 0 so use the third approximation for now
+  ai_x = [airy_one(i) for i in rng]
+  
+  prev_sign = 0
+  
+  sign_changes = []
+
+  for idx, val in enumerate(ai_x):
+    # 'Walk' along the function watching for sign changes
+    new_sign = sgn(val)
+    
+    if (prev_sign + new_sign) == 0:
+      # -1 + 1 = 0, so we've got a sign change
+      # tuple of the current x value and the previous one
+      sign_changes.append((rng[idx], rng[idx - 1]))
+    
+    prev_sign = new_sign
+    
+  return sign_changes
+
+def ridders_method(f, x1, x2, xacc = 0.001):
+  """
+  Finds a root of f between x1 and x2 to precision xacc
+  Translated to Python from Numerical Recipes 2007, p453
+  http://apps.nrbook.com/empanel/index.html#pg=453
+  """
+  iterations = 50
+  f1 = f(x1)
+  f2 = f(x2)
+  
+  if (sgn(f1) + sgn(f2)) == 0:
+    # A highlight unlikely root value
+    ans = -9e15
+    for i in range(0, iterations):
+      # Midpoint
+      x3 = 0.5*(x1 + x2)
+      f3 = f(x3)
+      denominator = sqrt((f3*f3) - (f1*f2))
+      # Check for 1/0
+      if denominator == 0: return ans
+      x4 = x3 + ((x3 - x1)*(sgn(f1 - f2)*f3)/denominator)
+      if fabs(x4 - ans) <= xacc: return ans
+      ans = x4
+      f4 = f(ans)
+      if f4 == 0: return ans
+      
+      if sign(f3, f4) != f3:
+        # Root is in (x3, x4)
+        x1 = x3
+        f1 = f3
+        x2 = ans
+        f2 = f4
+      elif sign(f1, f4) != f1:
+        # Root is in (x1, x4)
+        x2 = ans
+        f2 = f4
+      elif sign(f2, f4) != f2:
+        # Root is in (x2, x4)
+        x1 = ans
+        f1 = f4
+      else:
+        exit("Something funny's going on.")
+      
+      if fabs(x2 - x1) <= xacc: return ans
+    
+    exit("Ridders' could not acheive desired accuracy.")
+  else:
+    if f1 == 0: return x1
+    if f2 == 0: return x2
+    exit("No root found between x1 and x2.")
+
+rts = find_roots(-8, -3)
+for tup in rts:
+  print ridders_method(airy_one, tup[1], tup[0], 1e-7)
