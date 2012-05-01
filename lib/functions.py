@@ -1,3 +1,5 @@
+from math import fabs
+
 """ Returns -1, 0, +1 for x < =, x == 0 and x > 0 respectively """
 sgn = lambda x : cmp(x,0)
 
