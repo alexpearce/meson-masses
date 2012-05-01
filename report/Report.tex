@@ -1,6 +1,8 @@
 \documentclass[]{article}
 % Nice maths macros
 \usepackage{amsmath}
+% Units
+\usepackage{siunitx}
 % Figures and floats
 \usepackage{graphicx,subfig,float}
 
@@ -54,17 +56,19 @@ Applying the boundary conditions and implementing change of variable $u = r\psi$
 + V(r)u = Eu.
 \]
 
-As we are only concerned with $l = 0$, we performed another change or variable $r = ax + b$ to bring us to
+As we are only concerned with $l = 0$ we perform another change or variable $r = ax + b$, with $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$, to bring us to
 
 \[
 \frac{\d{y}}{\d{x}} - xy = 0.
 \]
 
-This is Airy's equation and has been is well studied. It is solvable analytical with solutions of the form
+This is Airy's equation and has been is well studied. It is analytically solvable with solutions of the form
 \[
 y(x) = c\Ai{x} + d\Bi{x},
 \]
-where $\Ai{x}$ and $\Bi{x}$ are the Airy functions. The first Airy function $\Ai{x}$ may be approximated for small $\mod{x}$ as
+where $\Ai{x}$ and $\Bi{x}$ are the Airy functions. As $\Bi{x}$ has a singularity at $x=\infty$ it does not satisfy the boundary conditions and so $d=0$.
+
+The first Airy function $\Ai{x}$ may be approximated for small $\mod{x}$ as
 \[
 \Ai{x} = 0.3550280538f(x) - 0.2588194037g(x),
 \]
@@ -115,7 +119,18 @@ To first order we have
 	\right ) & x < 0
 \end{cases}
 \]
-where $c_{1} = \frac{15}{216}$ and $\zeta = \frac{2}{3}\mod{x}^{-3/2}$.
+where $c_{1} = 15/216$.
+
+The problem is then finding the zeros of $\Ai{x}$.
+
+\subsection{Roots of $\Ai{x}$}
+
+The second boundary conditions requires that $u = 0$ at $r = 0$, that is $y = 0$ at $x = -b/a$, where
+\[
+a = \sqrt[3]{\frac{2mk}{\hbar^{2}}},\quad b = \frac{E}{k}
+\quad\Rightarrow\quad x = -\frac{E}{k}\sqrt[3]{\frac{\hbar^{2}}{2mk}}.
+\]
+So the $n$th energy level of the two quark system is $$E_{n} = -\frac{x_{n}k}{\sqrt[3]{2mk/\hbar^{2}}}$$ where $x_{n}$ is the $n$th root of $\Ai{x}$. This is dimensionally correct: $a$ has dimensions of $\si{\metre}$ and $k$ has dimensions of $\si{\joule\per\metre}$, making $x$ dimensionless and $E$ in dimensions of $\si{\joule}$.
 
 \begin{thebibliography}{9}
 	\bibitem{ref:gjdaniell}
