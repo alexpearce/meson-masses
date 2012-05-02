@@ -9,7 +9,7 @@ from numpy import *
 # http://docs.scipy.org/doc/scipy/reference/generated/scipy.special.airy.html
 from scipy.special import airy
 # Import a few maths functions
-from math import pow, factorial
+from math import pow, factorial, fabs
 
 # Import our modules
 from lib.functions import *
@@ -35,7 +35,7 @@ def g(x, n = 100):
   g = zeros(n)
   
   g[0] = x
-  x_3 = (x*x*x) / 3.0
+  x_3  = (x*x*x) / 3.0
   
   for i in range(1, n):
     g[i] = (g[i-1]*x_3) / ((3.0*i*i) + i)
@@ -100,7 +100,7 @@ def c_k_arr(k):
   c[1] = 3.0*5.0 / 216.0
   for i in range(2, k+2):
     six_i = 6.0*i
-    numerator = (six_i - 5)*(six_i - 3)*(six_i - 1)
+    numerator   = (six_i - 5)*(six_i - 3)*(six_i - 1)
     denominator = 216.0 * i * ((2.0*i) - 1)
     
     c[i] = c[i-1] * (numerator/denominator)
@@ -109,7 +109,7 @@ def c_k_arr(k):
 
 def airy_two(x, n = 10):
   """Computes the second approximation of Ai(x)"""
-  zeta = (2.0/3.0) * pow(x, (3.0/2.0))
+  zeta      = (2.0/3.0) * pow(x, (3.0/2.0))
   prefactor = 0.5 * pow(pi, -0.5) * pow(x, -0.25) * exp(-zeta)
   
   s = zeros(n)
@@ -121,7 +121,7 @@ def airy_two(x, n = 10):
 def airy_three(x, n = 2):
   """Computes the third approximation of Ai(x)"""
   mod_x = fabs(x)
-  zeta = (2.0/3.0) * pow(mod_x, (1.5))
+  zeta  = (2.0/3.0) * pow(mod_x, (1.5))
   prefactor = pow(pi, -0.5) * pow(mod_x, -0.25)
   
   trig_arg = zeta + (pi/4.0)
@@ -150,14 +150,14 @@ def nice_example():
   plb.plot(a_three_rng, a_three)
   plb.show()
   
-def find_roots(a, b, h = 0.01):
+def find_roots(f, a, b, h = 0.01):
   """
   Returns tuples of (x_1, x_2), where between x_1 and x_2 Ai(x) = 0,
   for Ai(x) between a and b, 'walking' along the function in steps of h
   """
   rng = arange(a, b, h)
   # All the zeros are for x < 0 so use the third approximation for now
-  ai_x = [airy_one(i) for i in rng]
+  ai_x = [f(i) for i in rng]
   
   prev_sign = 0
   
@@ -176,53 +176,64 @@ def find_roots(a, b, h = 0.01):
     
   return sign_changes
 
-def ridders_method(f, x1, x2, xacc = 0.001):
+### Roots ###
+
+def roots():
   """
-  Finds a root of f between x1 and x2 to precision xacc
-  Translated to Python from Numerical Recipes 2007, p453
-  http://apps.nrbook.com/empanel/index.html#pg=453
+  All the roots between -2 and -15
   """
-  iterations = 50
-  f1 = f(x1)
-  f2 = f(x2)
+  # Use the correct approximation in each range
+  a_one_roots = find_roots(airy_one, -2, -7, -0.01)
+  # Join the two approximations correctly, and not near a root
+  # (by inspection)
+  a_two_roots = find_roots(airy_three, -6.99, -15, -0.01)
   
-  if (sgn(f1) + sgn(f2)) == 0:
-    # A highlight unlikely root value
-    ans = -9e15
-    for i in range(0, iterations):
-      # Midpoint
-      x3 = 0.5*(x1 + x2)
-      f3 = f(x3)
-      denominator = sqrt((f3*f3) - (f1*f2))
-      # Check for 1/0
-      if denominator == 0: return ans
-      x4 = x3 + ((x3 - x1)*(sgn(f1 - f2)*f3)/denominator)
-      if fabs(x4 - ans) <= xacc: return ans
-      ans = x4
-      f4 = f(ans)
-      if f4 == 0: return ans
-      
-      if sign(f3, f4) != f3:
-        # Root is in (x3, x4)
-        x1 = x3
-        f1 = f3
-        x2 = ans
-        f2 = f4
-      elif sign(f1, f4) != f1:
-        # Root is in (x1, x4)
-        x2 = ans
-        f2 = f4
-      elif sign(f2, f4) != f2:
-        # Root is in (x2, x4)
-        x1 = ans
-        f1 = f4
-      else:
-        exit("Something funny's going on.")
-      
-      if fabs(x2 - x1) <= xacc: return ans
+  rts = []
+  
+  for root in a_one_roots:
+    rts.append(ridders_method(airy_one, root[0], root[1], 1e-10))
+  for root in a_two_roots:
+    rts.append(ridders_method(airy_three, root[0], root[1], 1e-10))
     
-    exit("Ridders' could not acheive desired accuracy.")
-  else:
-    if f1 == 0: return x1
-    if f2 == 0: return x2
-    exit("No root found between x1 and x2.")
+  return rts
+  
+def energies_from_root(x):
+  """Returns a energy in joules from a root of Airy's function Ai(x) == 0"""
+  return -x
+
+energies = [energies_from_root(rt) for rt in roots()]
+
+b_masses = [9.46, 10.02, 10.35, 10.57, 10.86, 11.02]
+c_masses = [3.10, 3.69, 4.04]
+
+b_energies = energies[:6]
+c_energies = energies[:3]
+
+(b_slope, b_intercept) = polyfit(b_energies, b_masses, 1)
+(c_slope, c_intercept) = polyfit(c_energies, c_masses, 1)
+
+# Theory bottom bass is 4.19 GeV
+print "b mass: {}".format(b_intercept/2)
+# Theory charm mass is 1.29 GeV
+print "c mass: {}".format(c_intercept/2)
+
+# Plot the numerical data vs the experimental
+plb.scatter(b_energies, b_masses)
+plb.scatter(c_energies, c_masses)
+
+# Plot the fitted curves
+rng = arange(0, 11, 1)
+plb.plot(rng, [polyval([b_slope, b_intercept], x) for x in rng])
+plb.plot(rng, [polyval([c_slope, c_intercept], x) for x in rng])
+
+# Set the y-axi range and display a grid
+plb.ylim([2, 12])
+plb.xlim([0, 10])
+plb.grid(True)
+
+# Axes labels
+plb.xlabel("Numerical")
+plb.ylabel("Experimental")
+plb.title("s-state meson masses")
+
+plb.show()
