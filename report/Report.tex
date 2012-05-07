@@ -1,10 +1,11 @@
 \documentclass[]{article}
+\usepackage{atlasphysics}
 % Nice maths macros
 \usepackage{amsmath}
 % Units
 \usepackage{siunitx}
 % Figures and floats
-\usepackage{graphicx,subfig,float}
+\usepackage{graphicx,subfigure,float}
 
 % Graphics folider
 \graphicspath{{figures/}}
@@ -131,6 +132,45 @@ a = \sqrt[3]{\frac{2mk}{\hbar^{2}}},\quad b = \frac{E}{k}
 \quad\Rightarrow\quad x = -\frac{E}{k}\sqrt[3]{\frac{\hbar^{2}}{2mk}}.
 \]
 So the $n$th energy level of the two quark system is $$E_{n} = -\frac{x_{n}k}{\sqrt[3]{2mk/\hbar^{2}}}$$ where $x_{n}$ is the $n$th root of $\Ai{x}$. This is dimensionally correct: $a$ has dimensions of $\si{\metre}$ and $k$ has dimensions of $\si{\joule\per\metre}$, making $x$ dimensionless and $E$ in dimensions of $\si{\joule}$.
+
+
+\subsection{Finding the Quark Masses}
+
+The formula for the the mass of a meson with quantum numbers $n$ and $l$ is $$M_{n,l} = 2m_{q} + E_{n,l},$$ where $m_{q}$ is the quark mass, and $E_{n,l}$ is the binding energy obtained from the Schr\"{o}dinger equation.
+
+We may then use the experimental meson masses to find the  proportionality constant $k$ and therefore the quark mass $m_{q}$.
+
+\begin{table}[H]
+	\begin{center}
+		\subtable[Charm Mesons $\ccbar$] {
+		\begin{tabular}{ c | c c c }
+			%\multicolumn{4}{c}{Charm Mesons}\\
+			$n$ & $l = 0$ & $l = 1$ & $l = 2$ \\ \hline
+			1 & 3.10 & 3.50 & 3.77 \\
+			2 & 3.69 & & \\
+			3 & 4.04 & & \\
+		\end{tabular}
+		%\caption{Charm Mesons $\ccbar$}
+		\centering
+		}
+		\quad % spacing
+		\subtable[Bottom Mesons $\bbbar$] {
+			\begin{tabular}{ c | c c c c }
+				%\multicolumn{4}{c}{Bottom Mesons}\\
+				$n$ & $l = 0$ & $l = 1$ & $l = 2$\\ \hline
+				1 & 9.46 & 9.9\\
+				2 & 10.02 & 10.02\\
+				3 & 10.35 &\\
+				4 & 10.57 &\\
+				5 & 10.86 &\\
+				6 & 11.02 &\\
+			\end{tabular}
+			\centering
+		}    
+		\caption{Meson Masses in \GeV.}
+		\label{tab:mesonmasses}
+	\end{center}  
+\end{table}
 
 \begin{thebibliography}{9}
 	\bibitem{ref:gjdaniell}
