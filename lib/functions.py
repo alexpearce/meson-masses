@@ -1,3 +1,4 @@
+import csv
 from math import fabs, sqrt
 
 """ Returns -1, 0, +1 for x < =, x == 0 and x > 0 respectively """
@@ -57,3 +58,15 @@ def ridders_method(f, x1, x2, xacc = 0.001):
     if f1 == 0: return x1
     if f2 == 0: return x2
     exit("No root found between x1 and x2.")
+
+def export_to_csv(x, y, filename = 'data'):
+  """Exports two equal-dimension arrays to a CSV file"""
+  if (len(x) != len(y)):
+    print "x and y must be of the same dimension."
+    exit()
+  print "Writing 2D data to {}.csv...".format(filename)
+  writer = csv.writer(open('{}.csv'.format(filename), 'wb'), delimiter = ',')
+  for k, v in enumerate(x):
+    writer.writerow([v, y[k]])
+
+  print "File writing complete."
