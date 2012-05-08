@@ -172,7 +172,16 @@ We may then use the experimental meson masses to find the  proportionality const
 	\end{center}  
 \end{table}
 
-By plotting these experimentally obtained meson masses $M_{n,l}$ against the numerical binding energies, we may find the potential constants $k$ and the quark masses ($m_{c}$ and $m_{b}$) by the slope and intercept respectively.
+By plotting these experimentally obtained meson masses $M_{n,0}$ against the numerical binding energies, we may find the potential constants $k$ and the quark masses ($m_{c}$ and $m_{b}$) by the slope and intercept respectively.
+
+
+\section{Data}
+
+The script gives a charm mass of $m_{c} = 1.2138\GeV$ and a bottom mass of $m_{b} = 4.5056\GeV$. The intercepts were $0.29689$ for the charm and $0.23004$ for the bottom. We may extract the $k$ values using
+$$M_{n,0} = 2m_{q} - x_{n}\left(\frac{k^{2}\hbar^{2}}{2m}\right)^{1/3} = 2m_{q} - \alpha x_{n}.$$
+Then, $k$ may be expressed with respect to the slope $\alpha$ as
+$$k_{q} = \pm\sqrt{\frac{2m\alpha_{q}^{3}}{\hbar^{2}}}.$$
+This gives values of $k_{c} = \num{3.10681e11}\si{\joule\per\metre}$ and $k_{b} = \num{4.08246e11}\si{\joule\per\metre}$.
 
 \begin{thebibliography}{9}
 	\bibitem{ref:gjdaniell}
