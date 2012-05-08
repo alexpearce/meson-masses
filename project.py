@@ -118,7 +118,7 @@ def airy_two(x, n = 10):
   
   return prefactor * sum(s)
   
-def airy_three(x, n = 2):
+def airy_three(x, n = 3):
   """Computes the third approximation of Ai(x)"""
   mod_x = fabs(x)
   zeta  = (2.0/3.0) * pow(mod_x, (1.5))
@@ -186,7 +186,7 @@ def roots():
   a_one_roots = find_roots(airy_one, -2, -7, -0.01)
   # Join the two approximations correctly, and not near a root
   # (by inspection)
-  a_two_roots = find_roots(airy_three, -6.99, -15, -0.01)
+  a_two_roots = find_roots(airy_three, -7, -15.01, -0.01)
   
   rts = []
   
@@ -196,44 +196,47 @@ def roots():
     rts.append(ridders_method(airy_three, root[0], root[1], 1e-10))
     
   return rts
-  
-def energies_from_root(x):
-  """Returns a energy in joules from a root of Airy's function Ai(x) == 0"""
-  return -x
 
-energies = [energies_from_root(rt) for rt in roots()]
+def plot_points():
+  """
+  Plots a pretty graph of the numerical roots of Airy's function
+  against the experimental meson masses. Also finds and prints the
+  slope and intersection of the LOBF for both sets of points.
+  """
+  # Take the minus sign as the roots are negative (and it says we should in E = -b/a)
+  energies = [-rt for rt in roots()]
 
-b_masses = [9.46, 10.02, 10.35, 10.57, 10.86, 11.02]
-c_masses = [3.10, 3.69, 4.04]
+  b_masses = [9.46, 10.02, 10.35, 10.57, 10.86, 11.02]
+  c_masses = [3.10, 3.69, 4.04]
 
-b_energies = energies[:6]
-c_energies = energies[:3]
+  b_energies = energies[:6]
+  c_energies = energies[:3]
 
-(b_slope, b_intercept) = polyfit(b_energies, b_masses, 1)
-(c_slope, c_intercept) = polyfit(c_energies, c_masses, 1)
+  (b_slope, b_intercept) = polyfit(b_energies, b_masses, 1)
+  (c_slope, c_intercept) = polyfit(c_energies, c_masses, 1)
 
-# Theory bottom bass is 4.19 GeV
-print "b mass: {}".format(b_intercept/2)
-# Theory charm mass is 1.29 GeV
-print "c mass: {}".format(c_intercept/2)
+  # Theory bottom bass is 4.19 GeV
+  print "b mass: {}, b slope: {}".format(b_intercept/2, b_slope)
+  # Theory charm mass is 1.29 GeV
+  print "c mass: {}, c slope: {}".format(c_intercept/2, c_slope)
 
-# Plot the numerical data vs the experimental
-plb.scatter(b_energies, b_masses)
-plb.scatter(c_energies, c_masses)
+  # Plot the numerical data vs the experimental
+  plb.scatter(b_energies, b_masses)
+  plb.scatter(c_energies, c_masses)
 
-# Plot the fitted curves
-rng = arange(0, 11, 1)
-plb.plot(rng, [polyval([b_slope, b_intercept], x) for x in rng])
-plb.plot(rng, [polyval([c_slope, c_intercept], x) for x in rng])
+  # Plot the fitted curves
+  rng = arange(0, 11, 1)
+  plb.plot(rng, [polyval([b_slope, b_intercept], x) for x in rng])
+  plb.plot(rng, [polyval([c_slope, c_intercept], x) for x in rng])
 
-# Set the y-axi range and display a grid
-plb.ylim([2, 12])
-plb.xlim([0, 10])
-plb.grid(True)
+  # Set the y-axi range and display a grid
+  plb.ylim([0, 12])
+  plb.xlim([0, 10])
+  plb.grid(True)
 
-# Axes labels
-plb.xlabel("Numerical")
-plb.ylabel("Experimental")
-plb.title("s-state meson masses")
+  # Axes labels
+  plb.xlabel("Numerical")
+  plb.ylabel("Experimental")
+  plb.title("s-state meson masses")
 
-plb.show()
+  plb.show()
