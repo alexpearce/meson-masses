@@ -230,6 +230,8 @@ def plot_points():
   plb.plot(rng, [polyval([c_slope, c_intercept], x) for x in rng])
 
   # Set the y-axi range and display a grid
+  plb.yticks(arange(0, 12))
+  plb.xticks(arange(0, 10))
   plb.ylim([0, 12])
   plb.xlim([0, 10])
   plb.grid(True)
