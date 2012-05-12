@@ -119,7 +119,7 @@ def airy_two(x, n = 5):
   
   return prefactor * sum(s)
   
-def airy_three(x, n = 3):
+def airy_three(x, n = 5):
   """Computes the third approximation of Ai(x)"""
   mod_x = fabs(x)
   zeta  = (2.0/3.0) * pow(mod_x, (1.5))
@@ -139,11 +139,17 @@ def airy_three(x, n = 3):
   return prefactor * (sin(trig_arg)*sum(s_1) - cos(trig_arg)*sum(s_2))
 
 def nice_example():
-  """A nice example of how the three approximations work together"""
+  """
+  A nice example of how the three approximations work together.
+  The ranges used are arbitrary numerically, but have been chosen
+  in order to present the points at which each function just starts
+  to diverge.
+  """
+  
   # The ranges across which each approximation will act
-  a_one_rng   = linspace(-15, 11, 1000)
-  a_two_rng   = linspace(1,   20, 1000)
-  a_three_rng = linspace(-20, -1, 1000)
+  a_one_rng   = linspace(-15.2, 11, 1000)
+  a_two_rng   = linspace(0.7,   20, 1000)
+  a_three_rng = linspace(-20, -1.55, 1000)
 
   a_one   = [airy_one(x)   for x in a_one_rng]
   a_two   = [airy_two(x)   for x in a_two_rng]
@@ -154,7 +160,6 @@ def nice_example():
   plb.plot(a_three_rng, a_three)
   plb.show()
   
-nice_example()
 def find_roots(f, a, b, h = 0.01):
   """
   Returns tuples of (x_1, x_2), where between x_1 and x_2 Ai(x) = 0,
