@@ -23,7 +23,7 @@
 
 \begin{document}
 
-\title{Masses of s-state Mesons}
+\title{Masses of S-State Mesons - Notes}
 \author{Alex Pearce}
 \date{\today}
 \maketitle
@@ -41,7 +41,7 @@ Radial Schr\"{o}dinger equation for two particles interacting via potential $V(r
 	\frac{1}{r^{2}} \frac{\d{}}{\d{r}} \left (
 		r^{2} \frac{\d{\psi}}{\d{r}}
 	\right )
-	- \frac{l(l+1)}{r^{2}}\psi
+	- \frac{\ell(\ell+1)}{r^{2}}\psi
 \right )
 + V(r)\psi = E\psi.
 \]
@@ -52,12 +52,12 @@ Applying the boundary conditions and implementing change of variable $u = r\psi$
 \[
 -\frac{\hbar^{2}}{2m}\left (
 	u''
-	- \frac{l(l+1)}{r^{2}}u
+	- \frac{\ell(\ell+1)}{r^{2}}u
 \right )
 + V(r)u = Eu.
 \]
 
-As we are only concerned with $l = 0$ we perform another change or variable $r = ax + b$, with $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$, to bring us to
+As we are only concerned with $\ell = 0$ we perform another change or variable $r = ax + b$, with $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$, to bring us to
 
 \[
 \frac{\d{y}}{\d{x}} - xy = 0.
@@ -145,7 +145,7 @@ We may then use the experimental meson masses to find the  proportionality const
 		\subtable[Charm Mesons $\ccbar$] {
 		\begin{tabular}{ c | c c c }
 			%\multicolumn{4}{c}{Charm Mesons}\\
-			$n$ & $l = 0$ & $l = 1$ & $l = 2$ \\ \hline
+			$n$ & $\ell = 0$ & $\ell = 1$ & $\ell = 2$ \\ \hline
 			1 & 3.10 & 3.50 & 3.77 \\
 			2 & 3.69 & & \\
 			3 & 4.04 & & \\
@@ -157,7 +157,7 @@ We may then use the experimental meson masses to find the  proportionality const
 		\subtable[Bottom Mesons $\bbbar$] {
 			\begin{tabular}{ c | c c c c }
 				%\multicolumn{4}{c}{Bottom Mesons}\\
-				$n$ & $l = 0$ & $l = 1$ & $l = 2$\\ \hline
+				$n$ & $\ell = 0$ & $\ell = 1$ & $\ell = 2$\\ \hline
 				1 & 9.46 & 9.9\\
 				2 & 10.02 & 10.02\\
 				3 & 10.35 &\\
@@ -177,7 +177,7 @@ By plotting these experimentally obtained meson masses $M_{n,0}$ against the num
 
 \section{Data}
 
-The script gives a charm mass of $m_{c} = 1.2138\GeV$ and a bottom mass of $m_{b} = 4.5056\GeV$. The intercepts were $0.29689$ for the charm and $0.23004$ for the bottom. We may extract the $k$ values using
+The script gives a charm mass of $m_{c} = 1.2138\GeV$ and a bottom mass of $m_{b} = 4.5056\GeV$ (via the fact that the intercept is $2m_{q}$). The slopes were $0.29689$ for the charm and $0.23004$ for the bottom. We may extract the $k$ values using
 $$M_{n,0} = 2m_{q} - x_{n}\left(\frac{k^{2}\hbar^{2}}{2m}\right)^{1/3} = 2m_{q} - \alpha x_{n}.$$
 Then, $k$ may be expressed with respect to the slope $\alpha$ as
 $$k_{q} = \pm\sqrt{\frac{2m\alpha_{q}^{3}}{\hbar^{2}}}.$$
