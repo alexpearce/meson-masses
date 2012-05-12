@@ -148,7 +148,7 @@ def nice_example():
   
   # The ranges across which each approximation will act
   a_one_rng   = linspace(-15.2, 11, 1000)
-  a_two_rng   = linspace(0.7,   20, 1000)
+  a_two_rng   = linspace(0.7,   15, 1000)
   a_three_rng = linspace(-20, -1.55, 1000)
 
   a_one   = [airy_one(x)   for x in a_one_rng]
