@@ -91,14 +91,13 @@ def c_k(k):
 
 def c_k_arr(k):
   """
-  Computes the first k+2 c_k coefficients for integer k > 1
+  Computes the first k+1 c_k coefficients for integer k > 1
   Interestingly, this is correct for c_k k > 6, whereas c_k(k) is not
   Good for about 14 dp up to c_k k > 9, not tested above this
   """
-  c = range(k + 2)
+  c = range(k+1)
   c[0] = 1.0
-  c[1] = 3.0*5.0 / 216.0
-  for i in range(2, k+2):
+  for i in range(1, k+1):
     six_i = 6.0*i
     numerator   = (six_i - 5)*(six_i - 3)*(six_i - 1)
     denominator = 216.0 * i * ((2.0*i) - 1)
@@ -128,7 +127,7 @@ def airy_three(x, n = 5):
   trig_arg = zeta + (pi/4.0)
   
   # Get the first 2*n+2 c_k coefficients
-  c_k = c_k_arr(2*n)
+  c_k = c_k_arr((2*n) + 1)
   
   # Compute the first and second sum
   s_1, s_2 = zeros(n), zeros(n)
@@ -160,6 +159,7 @@ def nice_example():
   plb.plot(a_three_rng, a_three)
   plb.show()
   
+nice_example()
 def find_roots(f, a, b, h = 0.01):
   """
   Returns tuples of (x_1, x_2), where between x_1 and x_2 Ai(x) = 0,
