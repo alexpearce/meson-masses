@@ -149,7 +149,7 @@ For example, $f(x)$, as in equation \ref{eqn:airyfirstf}, carries a factorial in
 
 As the factorial is in the denominator, the final number will be small, but computing this by blindly calculating $x!$ will result in storing huge numbers in memory as the number of terms in the series increases. Modern computers can only handle numbers of a certain magnitude before they overflow, causing large numerical errors. Recursion stops the storage of large numbers in memory, preventing this problem.
 
-The derivation of the recursive forms of $f(x)$, $g(x)$ and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ benefits hugely from recursive computation as it prevents us having to calculate $216^{k}$, requiring us to merely multiply successive terms by $1/216$. 
+The derivation of the recursive forms of $f(x)$, $g(x)$ and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ benefits hugely from recursive computation as it prevents us having to calculate $216^{k}$, requiring us to merely multiply successive terms by $1/216$. TODO: mention how many terms the recursive term can handle vs. the regular computation.
 
 \section{Figures}\label{sec:figures}
 
@@ -199,10 +199,11 @@ g_{n}(x) &= \frac{g_{n-1}(x)}{(3n^{2} + n)} \frac{x^{3}}{3},
 \end{align*}
 where $f_{0}(x) = 1$ and $g_{0}(x) = x$.
 
-The series coefficients $c_{k}$ used in the second and third approximations of $\Ai{x}$ may also be presented recursively. TODO: this.
+The series coefficients $c_{k}$ used in the second and third approximations of $\Ai{x}$ may also be presented recursively.
 \[
-c_{k} = 1
+c_{k} = c_{k-1} \frac{(6k-5)(6k-3)(6k-1)}{216k(2n-1)}
 \]
+where $c_{0} = 1$.
 
 \begin{figure}[H]
 	\hspace*{-0.15\textwidth}
