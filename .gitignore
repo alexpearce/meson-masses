@@ -5,5 +5,4 @@
 .DS_Store
 **.toc
 **.t1
-report/Report.pdf
-report/Description.pdf
+report/*.pdf
