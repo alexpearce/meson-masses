@@ -59,6 +59,63 @@ def ridders_method(f, x1, x2, xacc = 0.001):
     if f2 == 0: return x2
     exit("No root found between x1 and x2.")
 
+def bisection(f, x1, x2, xacc = 0.001):
+  """
+  Finds a root of f between x1 and x2 to precision xacc
+  using the bisection method.
+  http://apps.nrbook.com/empanel/index.html#pg=449
+  """
+  jmax = 50
+  f1 = f(x1)
+  fmid = f(x2)
+  if f1*fmid >= 0.0: exit("Root must be bracketed.")
+  
+  if f1 < 0.0:
+    dx = x2 - 1
+    rtb = x1
+  else:
+    dx = x1 - x2
+    rtb = x2
+  for j in range(jmax):
+    dx *= 0.5
+    xmid = rtb + dx
+    fmid = f(xmid)
+    if fmid <= 0.0: rtb = xmid
+    if fabs(dx) < xacc or fmid == 0.0:
+      # Convergence
+      return rtb;
+  exit("Accuracy could not be reached.")
+
+def secant(f, x1, x2, xacc = 0.001):
+  """
+  Finds a root of f between x1 and x2 to precision xacc
+  using the secant method.
+  http://apps.nrbook.com/empanel/index.html#pg=452
+  """
+  maxiterations = 30
+  fl = f(x1)
+  f2 = f(x2)
+  if (fabs(fl) < fabs(f2)):
+    rts = x1
+    xl = x2
+    # Swap fl and f2
+    temp = fl
+    fl = f2
+    f2 = temp
+  else:
+    xl = x1
+    rts = x2
+  for j in range(maxiterations):
+    dx = (xl - rts)*f2/(f2 - fl)
+    xl = rts
+    fl = f2
+    rts += dx
+    f2 = f(rts)
+    if abs(dx) < xacc or f2 == 0.0:
+      # Convergence
+      return rts
+  exit("Accuracy could not be reached.")
+  
 def export_to_csv(x, y, filename = 'data'):
   """Exports two equal-dimension arrays to a CSV file"""
   if (len(x) != len(y)):
