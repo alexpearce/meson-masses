@@ -48,11 +48,12 @@ Under the laws of QCD, we cannot observe states of colour; that is to say we can
 
 As all mesons are colourless they are, in principle, observable. (They may decay extremely quickly or be very massive making them difficult to produce and/or observe, however.) We may nav\"{i}ely think that if we can measure the masses several different mesons then we could extract the constituent quark masses from the data, but the mass of meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy then we could obtain the individual quark masses.
 
-TODO: put sections numbers in the bit below
+We set out in section \ref{sec:schrodinger} by solving the Schr\"{o}dinger equation for quarkonium to find that it's solution is Airy's function $\Ai{x}$, where the roots of this function are related to the binding energy of the \qqbar pair.
 
-We set out by solving the Schr\"{o}dinger equation for quarkonium to find that it's solution is Airy's function $\Ai{x}$, where the roots of this function are related to the binding energy of the \qqbar pair.
+We willl find the roots via a numerical algorithm in section \ref{sec:approximation} and then plot these roots against experimental data of meson masses in order to extract both the strength of the binding potential $V=kr$ and the charm and bottom quark masses $m_{c}$ and $m_{b}$.
 
-We find the roots via a numerical algorithm and then plot these roots against experimental data of meson masses in order to extract both the strength of the binding potential $V=kr$ and the charm and bottom quark masses $m_{c}$ and $m_{b}$.
+Our results will be presented in section \ref{sec:results}, followed by a brief discussion of some root finding algorithms that are available in section \ref{sec:algorithms}. Finally, we draw our conclusions in section \ref{sec:conclusion}.
+
 
 
 \section{Solving the Schr\"{o}dinger equation for \qqbar}\label{sec:schrodinger}
@@ -103,6 +104,8 @@ y(x) = \Ai{x}
 \]
 
 \footnotetext{$\Ai{x} \to 0$ as $x \to \pm\infty$.}
+
+
 
 \section{Approximation of \Ai{x}}\label{sec:approximation}
 
@@ -177,6 +180,8 @@ Once we have obtained the roots, the energy of the $n$th excited state of quarko
 E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}
 \end{equation}
 
+
+
 \section{Results}\label{sec:results}
 
 The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$ match extremely well with the reference roots~\cite{ref:abramowitz}, in fact matching with the precision passed this Ridder's method.
@@ -214,7 +219,9 @@ or other, more complex, candidates.
 
 It is worthy of note however just how far the simple linear potential has bought us as well as how accurate the implementations of the Airy function approximations were.
 
-\section{Root Finding Algorithms}
+
+
+\section{Root Finding Algorithms}\label{sec:algorithms}
 
 One point that was not discussed previously was the efficiency of the root finding algorithm we used (Ridder's method).
 
@@ -224,11 +231,27 @@ We shall briefly explore of the performance of Ridder's method in comparison wit
 
 Each method require bracketing a root first. In order to create as fair a trial as possible, we shall pass the same bracketed root to each algorithm, and see how many iterations each method takes to reach a given precision.
 
+We arbitrarily choose the first root of Airy's function, bracketing in between $x_{1} = -2.33$ and $x_{2} = -2.34$, and set the require accuracy of all algorithms to be $\pm\num{e-10}$.
+
+\subsection{Results}\label{ssec:results}
+
+The bisection method took 27 iterations to reached the desired accuracy, whilst the other two algorithms both took 3 iterations. All three methods returned the same value of  $-2.3381074104$, which is the first root correct to 9 decimal places, within the accuracy of $\num{e-10}$ (see table \ref{tab:roots} for the $n$th root values).
+
+The bisection method is arguably the most basic root finding algorithm. It is guaranteed to find the root~\cite{ref:nr} so is very robust, but clearly convergences slowly when compared to more intelligent methods. Ridder's method and secant method perform very similarly, most likely because they are both members of the same family of algorithms (false position).
+
+The simple form of Airy's function combined with the close bracketing of tthe roots allows very fast convergence to the root.
+
+\section{Conclusions}\label{sec:conclusion}
+
+Through solving the Schr\"{o}dinger for bound quark-antiquark states, the Airy function \Ai{x} was found to be a solution given a linear potential $V = kr$ and zero angular momentum $\ell = 0$. Through numerical approximations of the Airy function, the roots were found in order to acquire the binding energies of the \qqbar system. The roots are given in table \ref{tab:mesonmasses}.
+
+The charm and bottom quark masses $m_{c} = 1.21\GeV$ and $m_{b} = 4.51\GeV$ were found from these roots and the slope of the plot of the roots against the experimental meson masses allowed us to find the potential strength $k$. A difference of $\Delta k = 0.97 \si{\joule\per\metre}$ was found.
+
+Both values are within an acceptable limit from the reference masses~\cite{ref:pdg} of $\sim 5\%$. These errors were attributed to the lack of experimental charmonium spectrum data and a na\"{i}ve linear binding potential. 
+
+Through comparisons of root finding algorithms, Ridder's method and secant method were found to be of comparable performance. We recommend either method for future use.
 
 
-\section{Conclusions}
-
-TODO: this.
 
 \section{Tables}
 
@@ -270,7 +293,6 @@ TODO: this.
 	\end{center}  
 \end{table}
 
-\section{Root Finding Algorithms}\label{sec:algorithms}
 
 
 \section{Figures}\label{sec:figures}
