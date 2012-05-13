@@ -58,7 +58,7 @@ We find the roots via a numerical algorithm and then plot these roots against ex
 \section{Solving the Schr\"{o}dinger equation for \qqbar}\label{sec:schrodinger}
 
 We start by presuming that the bound \qqbar meson is massive enough such that we may use non-relativistic quantum mechanics, hence we employ the Schr\"{o}dinger equation. TODO: Why? We solve the time-independent radial equation (cf.\ the Hydrogen atom~\cite{ref:dgriffithsquantum})
-\[
+\begin{equation}\label{eqn:schrodinger}
 -\frac{\hbar^{2}}{2m}\left (
 	\frac{1}{r^{2}} \frac{\d{}}{\d{r}} \left (
 		r^{2} \frac{\d{\psi}}{\d{r}}
@@ -66,7 +66,7 @@ We start by presuming that the bound \qqbar meson is massive enough such that we
 	- \frac{\ell(\ell+1)}{r^{2}}\psi
 \right )
 + V(r)\psi = E\psi.
-\]
+\end{equation}
 Here $m$ is the so-called reduced mass (equal to half of each constituent quark mass e.g. $m_{c}/2$ for charmonium), $\ell$ is the orbital angular momentum quantum number, $V(r)$ is the binding potential, $\psi$ is the eigenwavefunction of the Hamiltonian $H$ and $E$ is the eigenvalue for $\phi$ under $H$. Note this is, as mentioned, an eigenvalue problem $H\psi=E\psi$.
 
 \subsection{Assumptions}\label{ssec:assumptions}
@@ -106,9 +106,12 @@ y(x) = \Ai{x}
 
 \section{Approximation of \Ai{x}}\label{sec:approximation}
 
-We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find to roots of Airy's function.
+We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find to roots of Airy's function. As $r = ax + b$, the $n$th root of Airy's function corresponds to
+\begin{equation}\label{eqn:rootexpression}
+\Ai{x} = 0 \quad\Rightarrow\quad x_{n} = -\frac{b}{a} = -E_{n}\sqrt[3]{\frac{\hbar^{2}}{2mk^{4}}}
+\end{equation}
 
-In order to do this we shall approximate Arie's function with three different representations. This is often necessary for analytical functions that vary there form along $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
+In order to do this we shall approximate Airy's function with three different representations. This is often necessary for analytical functions that vary there form along $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
 
 The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
 
@@ -137,6 +140,12 @@ Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansi
 
 We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} and the first, second, and third approximation of Airy's function respectively (keeping in mind that each representation is appropriate for different values of $x$).
 
+A comparison of the different approximations is given in figure \ref{fig:approximations}. The data has been presented in such a way so as to illustrate how each approximations diverges outside a given range of $x$.
+
+The first approximation gives satisfactory result for approximately $-13 < x < 7$, the second for $x > 5$, and the third for $x < -4$. Clearly the roots of \Ai{x} are all negative, hence we shall not need the second approximation.
+
+We shall then use a combination of the first and third approximations, specifically the first for $-8 < x < 0$ and the third for $x < -8$.
+
 \subsection{Recursive Computation}\label{ssec:recursion}
 
 The expressions for the series expansions coefficients $c_{k}$ in equation \ref{eqn:ck} are clearly quite cumbersome, but we may tame them to a degree via recursive computation. The functions $f(x)$ and $g(x)$ in the first approximation of $\Ai{x}$ may also be treated recursively (see equations \ref{eqn:airyfirstf} and \ref{eqn:airyfirstg}).
@@ -153,10 +162,35 @@ The derivation of the recursive forms of $f(x)$, $g(x)$, and the coefficients $c
 
 \subsection{Roots of \Ai{x}}
 
+We have now reduced the task of solving the Schr\"{o}dinger equation (equation \ref{eqn:schrodinger}) to numerically approximating and then finding the roots of Airy's function.
 
+By inspecting figure \ref{fig:approximations}, we see that the first root occurs just after $x = 2$. In order to find the roots then, we shall `walk' along the function until the sign changes, in which case we know there is a root between the previous and current step $x_{n-1}$ and $x_{n}$.
+
+This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a number for the root (only two numbers which contain the root) nor would we have good performance (we would waste time walking along the parts of function without roots).
+
+To remedy this, we shall use our walking procedure to find the bracketed roots, and then pass the bracket values to a numerical algorithm called Ridder's method~\cite{ref:nr}. Ridder's method accepts two values $x_{1}$ and $x_{2}$ for which $\Ai{x_{1} < x_{R} < x_{2}} = 0$ for some $x_{R}$, a root of Airy's function. It then iteratively finds the root of a function to a desired precision.
+
+Ridder's method quick to converge and nicely allows us to provide a precision. A small selection of other root finding algorithms along with Ridder's method are compared in section \ref{sec:algorithms}.
+
+Once we have obtained the roots, the energy of the $n$th excited state of quarkonium may be found from equation \ref{eqn:rootexpression}
+\begin{equation}
+E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}
+\end{equation}
+
+\section{Results}\label{sec:results}
+
+\section{Root Finding Algorithms}\label{sec:algorithms}
 
 
 \section{Figures}\label{sec:figures}
+
+\begin{figure}[H]
+	\hspace*{-0.15\textwidth}
+	\centering
+	\includegraphics[scale=1.3]{approximations}
+	\caption{The first, second, and third approximations of \Ai{x} as given in equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} respectively.}
+	\label{fig:approximations}
+\end{figure}
 
 \begin{figure}[H]
 	\hspace*{-0.15\textwidth}
