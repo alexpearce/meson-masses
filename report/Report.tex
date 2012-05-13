@@ -218,11 +218,13 @@ It is worthy of note however just how far the simple linear potential has bought
 
 One point that was not discussed previously was the efficiency of the root finding algorithm we used (Ridder's method).
 
-We shall briefly explore of the performance of Ridder's method in comparison with two other algorithms: the secant method and Muller's method.
+We shall briefly explore of the performance of Ridder's method in comparison with two other algorithms: the bisection and secant methods. The convergence rates and precision available in all three algorithms shall be compared the gauge which one is suitable for our function \Ai{x}.
 
-It is an interesting sidenote to mention that Ridder's method is a false-positive method, which are generally considered more stable than a secant method. Further to this, Muller's method is based on the secant method.
+\subsection{Procedure}\label{ssec:procedure}
 
-With this, we shall be able to compare and contrast the convergence rates and precision available in all three algorithms, and see how the supposed evolution of each method (secant to Muller's to Ridder's method) translates computationally.
+Each method require bracketing a root first. In order to create as fair a trial as possible, we shall pass the same bracketed root to each algorithm, and see how many iterations each method takes to reach a given precision.
+
+
 
 \section{Conclusions}
 
