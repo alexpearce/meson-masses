@@ -181,26 +181,82 @@ E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}
 
 The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$ match extremely well with the reference roots~\cite{ref:abramowitz}, in fact matching with the precision passed this Ridder's method.
 
-This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. TODO: compare how our Python \verb+c_{k}+ methods compares with the array \verb+c_k_arr+ method in terms of root accuracy and precision.
+This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. The difference between the computeted and reference roots $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}}$ is of the order $\num{e-10}$, which is exactly the precision we told Ridder's method to use. It is a reasonable assumption that the approximations of Airy's function we used are capable of even more precision if desired.\footnotemark
 
-\begin{table}
-	%TODO float this
-	\begin{tabular}{ c c c }
-		$n$ & $x_{n}^{\mathrm{comp}}$ & $x_{n}^{\mathrm{ref}}$\\
-		\hline
-		1  & -2.3381074104 & -2.3381074101\\
-		2  & -4.0879494441 & -4.0879494438\\
-		3  & -5.5205598280 & -5.5205598278\\
-		4  & -6.7867080900 & -6.7867080898\\
-		5  & -7.9441335871 & -7.9441335869\\
-		6  & -9.0226508533 & -9.0226508531\\
-		7  & -10.0401743416 & -10.0401743414\\
-		8  & -11.0085243037 & -11.0085243036\\
-		9  & -11.9360155632 & -11.9360155631\\
-		10 & -12.8287767529 & -12.8287767527
-	\end{tabular}
-	\caption{Roots of \Ai{x}. Computed are $x_{n}^{\mathrm{comp}}$, the reference roots~\cite{ref:abramowitz} are $x_{n}^{\mathrm{ref}}$. The difference between the two is $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}} \sim \num{e-10}$ for all roots.}
-	\label{tab:roots}
+\footnotetext{The use of a precision of $\num{e-10}$ was twofold: the reference roots $x_{n}^{\mathrm{ref}}$ were given up to ten decimal places making comparison difficult, and the meson masses with which we compare the roots are given to three decimal places. Hence a precision larger than $\num{e-10}$ would have been superfluous.}
+
+Given the experimental mesons masses in table \ref{tab:mesonmasses}~\cite{ref:gdaniell}, the computed roots were plotted against these masses. The resulting plot is shown in figure \ref{fig:data}.
+
+Despite a limited data set for the Charmonium masses, both sets of plotted points indicate a linear relationship, which supports our use of a liner potential. Via equation \ref{eqn:mesonmass}, the intercept of the superimposed lines gives twice the quark mass $m_{q}$, whilst the slopes allow us to calculate $k$. Using this we present
+\begin{align*}
+m_{c} = 1.21\GeV&,\quad m_{b} = 4.51\GeV,\\
+k_{c} = \num{3.11e11}\si{\joule\per\metre}&,\quad k_{b} = \num{4.08e11}\si{\joule\per\metre}.
+\end{align*}
+
+The above data presumes absolute accuracy in the experimental data~\cite{ref:gdaniell} used. Without errors on the experimental meson masses it is difficult to provide meaningful errors with our results.
+
+\subsection{Comparison}
+
+Data does exist for the charm and bottom quark masses~\cite{ref:pdg}, giving $m_{c} = 1.29^{+0.05}_{-0.11}\GeV$ and $m_{b} = 4.67^{+0.18}_{-0.06}\GeV$.\footnotemark
+
+\footnotetext{We have used the 1S scheme for the bottom mass as it more appropriate for our low-energy regime.}
+
+These agree quite well with our data, differing by $7\%$ for the charm and $4\%$ for the bottom quark. In both cases our data gives a slightly higher quark mass.
+
+We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding research on them and meaningful errors on our own data. Secondly, the simple form of the binding potential $V(r)$ is unlikely to represent the true QCD binding potential. A better fit to other data may have been achieved with another potential such as the Cornell potential~\cite{ref:eichten}
+\[
+V(r) = \frac{a}{r} + br,
+\]
+or other, more complex, candidates.
+
+It is worthy of note however just how far the simple linear potential has bought us and also how well the Airy function approximations used performed.
+
+\section{Root Finding Algorithms}
+
+TODO: this.
+
+\section{Conclusions}
+
+TODO: this.
+
+\section{Tables}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ c c c }
+			$n$ & $x_{n}^{\mathrm{comp}}$ & $x_{n}^{\mathrm{ref}}$\\
+			\hline
+			1  & -2.3381074104  & -2.3381074101 \\
+			2  & -4.0879494441  & -4.0879494438 \\
+			3  & -5.5205598280  & -5.5205598278 \\
+			4  & -6.7867080900  & -6.7867080898 \\
+			5  & -7.9441335871  & -7.9441335869 \\
+			6  & -9.0226508533  & -9.0226508531 \\
+			7  & -10.0401743416 & -10.0401743414\\
+			8  & -11.0085243037 & -11.0085243036\\
+			9  & -11.9360155632 & -11.9360155631\\
+			10 & -12.8287767529 & -12.8287767527
+		\end{tabular}
+		\caption{Roots of \Ai{x}. Computed are $x_{n}^{\mathrm{comp}}$, the reference roots~\cite{ref:abramowitz} are $x_{n}^{\mathrm{ref}}$. The difference between the two is $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}} \sim \num{e-10}$ for all roots.}
+		\label{tab:roots}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ c c c c }
+			$n$ & \ccbar & & \bbbar\\
+			\hline
+			1 & 3.10 & & 9.46 \\
+			2 & 3.69 & & 10.02\\
+			3 & 4.04 & & 10.35\\
+			4 &      & & 10.57\\
+			5 &      & & 10.86\\
+			6 &      & & 11.02\\
+		\end{tabular}
+		\caption{Quarkonium masses with $\ell = 0$ in \GeV~\cite{ref:gdaniell}.}
+		\label{tab:mesonmasses}
+	\end{center}  
 \end{table}
 
 \section{Root Finding Algorithms}\label{sec:algorithms}
