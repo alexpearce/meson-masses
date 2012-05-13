@@ -36,17 +36,17 @@ We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccba
 
 \section{Introduction}\label{sec:intro}
 
-A meson is a bound state of a quark and an antiquark. A neutral pion $\pi^{0}$ is a quantum superposition of \uubar and \ddbar, specifically $1/\sqrt{2}(\uubar + \ddbar)$. Quarkonium is an umbrella term for any meson which is comprised of a quark and its antiparticle \qqbar.\footnotemark\ A bound state of \ccbar is called charmonium and that of \bbbar is called bottomonium.
+A meson is a bound state of a quark and an antiquark. A neutral pion $\pi^{0}$, as an example, is a quantum superposition of \uubar and \ddbar, specifically $1/\sqrt{2}(\uubar + \ddbar)$. Quarkonia are a subset of the mesons, and are mesons comprised of a quark and its antiparticle \qqbar.\footnotemark\ A bound state of \ccbar is called charmonium and that of \bbbar is called bottomonium.
 
 % Meson/Quarkonium distinction
 \footnotetext{Note the distinction between a quark and \emph{any other} antiquark, such as $u\bar{s}$, and a quark and it's \emph{own antiparticle}, such as $\ccbar$. The latter is quarkonium, the former belongs in the broader category of mesons.}
 
-Under the laws of QCD, we cannot observe states of colour. That is to say we can only see colourless states. Quarks and gluons (the gauge bosons of QCD), carry colour\footnotemark\ and hence cannot be observed on their own. This property of quarks and gluons is known as colour confinement. Because of colour confinement we cannot measure the quark mass directly, and so must turn to indirect methods of measurement.
+Under the laws of QCD, we cannot observe states of colour; that is to say we can only see colourless states. Quarks and gluons (the gauge bosons of QCD) carry colour\footnotemark\ and hence cannot be observed on their own. This property of quarks and gluons is known as colour confinement. Because of colour confinement we cannot measure the quark mass directly and so must turn to indirect methods of measurement.
 
 % Quark and gluon colour
 \footnotetext{A quark carries one colour or anticolour such as red, green or antiblue ($r$, $g$ or $\bar{b}$) whilst a gluon carries a superposition of two one colour and one anticolour states such as red-antigreen and green-antired ($1/\sqrt{2}(r\bar{g} + g\bar{r})$). For an enlightening discussion on colour theory see Griffiths~\cite{ref:dgriffithsparticles}.}
 
-As all mesons are colourless they are, in principle, observable. (They may decay extremely quickly or be very massive making them difficult to produce and/or observe, though.) We may nav\"{i}ely think that if we can measure the masses several different mesons then we could extract the constituent quark masses from the data, but unfortunately the mass of meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy then we could obtain the individual quark masses.
+As all mesons are colourless they are, in principle, observable. (They may decay extremely quickly or be very massive making them difficult to produce and/or observe, however.) We may nav\"{i}ely think that if we can measure the masses several different mesons then we could extract the constituent quark masses from the data, but the mass of meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy then we could obtain the individual quark masses.
 
 TODO: put sections numbers in the bit below
 
@@ -57,7 +57,7 @@ We find the roots via a numerical algorithm and then plot these roots against ex
 
 \section{Solving the Schr\"{o}dinger equation for \qqbar}\label{sec:schrodinger}
 
-We start by presuming that the bound \qqbar meson is massive enough such that we use non-relativistic quantum mechanics, hence we may employ the Schr\"{o}dinger equation. TODO: Why? We solve the time-independent radial equation as for the electron-proton bound state (i.e. the Hydrogen atom~\cite{ref:dgriffithsquantum})
+We start by presuming that the bound \qqbar meson is massive enough such that we may use non-relativistic quantum mechanics, hence we employ the Schr\"{o}dinger equation. TODO: Why? We solve the time-independent radial equation (cf.\ the Hydrogen atom~\cite{ref:dgriffithsquantum})
 \[
 -\frac{\hbar^{2}}{2m}\left (
 	\frac{1}{r^{2}} \frac{\d{}}{\d{r}} \left (
@@ -73,13 +73,13 @@ Here $m$ is the so-called reduced mass (equal to half of each constituent quark 
 
 We shall investigate quarkonium states with zero angular momentum, that is $\ell = 0$. In addition, as mentioned previously, we shall work in the non-relativistic regime.
 
-The most crucial approximation that we make is that of the binding potential $V(r)$. We shall use a linear potential model, that of $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass as follows.
+The most crucial approximation that we make is that of the binding potential $V(r)$. We shall use a linear potential model $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass as follows.
 
-As stated previously, we hope that the measured mass of meson of not only the mass of its constituent quarks but also includes the binding energy of the bound system (via the mass-energy equivalence $E=mc^{}2$). Then, we assume a measured meson mass conforms to
+As stated previously, we anticipate that the measured mass of meson is not only the mass of its constituent quarks but also the binding energy of the bound system (via the mass-energy equivalence $E=mc^{2}$). Then, we assume a measured meson mass conforms to
 \begin{equation}\label{eqn:mesonmass}
 M_{n} = 2m_{q} + E_{n}
 \end{equation}
-where $n$ refers to the $n$th \emph{excited state} of the meson. The excited states may be thought of like those of an electron orbiting a proton: the bound quarks may occupy infinitely many quantised energy levels of increasing radial distance and increasing energy.
+where $n$ refers to the $n$th \emph{excited state} of the meson~\cite{ref:buchmuller}. The excited states may be thought of like those of an electron orbiting a proton: the bound quarks may occupy infinitely many quantised energy levels of increasing radial distance and increasing energy. It follows that equation \ref{eqn:mesonmass} represents the quarkonium \emph{spectrum}.
 
 Given experimental data of excited meson masses then, we can plot our binding energies $E_{n}$ against them to find the quark mass $m_{q}$.
 
@@ -108,9 +108,9 @@ y(x) = \Ai{x}
 
 We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find to roots of Airy's function.
 
-In order to do this we shall approximate Airy's function with three different representations. This is often necessary for complex analytical functions that vary there behaviour along $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
+In order to do this we shall approximate Arie's function with three different representations. This is often necessary for analytical functions that vary there form along $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
 
-The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms here, but are reproduced in term in appendix \ref{app:approximations}.
+The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
 
 For small $\mod{x}$ we have
 
@@ -149,7 +149,7 @@ For example, $f(x)$, as in equation \ref{eqn:airyfirstf}, carries a factorial in
 
 As the factorial is in the denominator, the final number will be small, but computing this by blindly calculating $x!$ will result in storing huge numbers in memory as the number of terms in the series increases. Modern computers can only handle numbers of a certain magnitude before they overflow, causing large numerical errors. Recursion stops the storage of large numbers in memory, preventing this problem.
 
-The derivation of the recursive forms of $f(x)$, $g(x)$ and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ benefits hugely from recursive computation as it prevents us having to calculate $216^{k}$, requiring us to merely multiply successive terms by $1/216$. TODO: mention how many terms the recursive term can handle vs. the regular computation.
+The derivation of the recursive forms of $f(x)$, $g(x)$, and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ in particular benefits from recursive computation as it prevents us having to calculate $216^{k}$, only requiring us to multiply successive terms by $1/216$ (which is also much less expensive computationally). TODO: mention how many terms the recursive term can handle vs. the regular computation.
 
 \section{Figures}\label{sec:figures}
 
@@ -215,6 +215,9 @@ where $c_{0} = 1$.
 
 
 \begin{thebibliography}{9}
+	% TODO: delete any of these if unused once finished
+
+	% QCD
 	\bibitem{ref:iaitchison}
 	I. J. R. Aitchenson \& A. J. G. Hey,
 	\emph{Gauge Theories in Particle Physics, Volume II: QCD and the Electroweak Theory},
@@ -222,27 +225,46 @@ where $c_{0} = 1$.
 	3rd Edition,
 	2003.
 	
-
+	% Meson mass formula
+  \bibitem{ref:buchmuller}
+  W. Buchm\"{u}ller \& S.-H. H. Tye,
+  ``Quarkonia and quantum chromodynamics''
+  \emph{\PR D} \textbf{24},
+  Issue 1,
+  p132-156 (1981).
+	
+	% PHYS6017 course notes
 	\bibitem{ref:gdaniell}
   G. J. Daniell,
   \emph{PHYS6017 Course Notes},
   University of Southampton, Southampton, UK,
   2011.
   
+  % Different potential forms V(r), including the Cornell potential
+  \bibitem{ref:eichten}
+  E. J. Eichten \& C. Quigg,
+  ``Quarkonium wave functions at the origin''
+  \emph{\PR D} \textbf{52},
+  Issue 3,
+  p1726-1728 (1995).
+  
+  % Chebyshev expansion
 	\bibitem{ref:agil}
-  A. Gil, J. Segura and N. M. Temme,
+  A. Gil, J. Segura \& N. M. Temme,
   \emph{Numerical Methods for Special Functions},
   Society for Industrial and Applied Mathematics, Philadelphia PA, USA,
   $1$st Edition,
   2007.
   
-   \bibitem{ref:dgriffithsparticles}
+  % Colour theory
+  \bibitem{ref:dgriffithsparticles}
   D. Griffiths,
   \emph{Introduction to Elementary Particles},
   Wiley-VCH, Weinheim,
   2nd Edition,
   2003.
   
+  % The benchmark QM book
   \bibitem{ref:dgriffithsquantum}
   D. Griffiths,
   \emph{Introduction to Quantum Mechanics},
@@ -250,6 +272,7 @@ where $c_{0} = 1$.
   6th Edition,
   2011.
   
+  % Ridder's method algorithm
   \bibitem{ref:nr}
   W. H. Press et al.,
   \emph{Numerical Recipes: The Art of Scientific Computing},
@@ -257,6 +280,7 @@ where $c_{0} = 1$.
   $3$rd Edition,
   2007.
   
+  % A nice introduction on charmonium, ideas translate to quarkonium
   \bibitem{ref:mvoloshin}
   M.B. Voloshin,
   ``Charmonium'',
