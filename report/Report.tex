@@ -179,6 +179,30 @@ E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}
 
 \section{Results}\label{sec:results}
 
+The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$ match extremely well with the reference roots~\cite{ref:abramowitz}, in fact matching with the precision passed this Ridder's method.
+
+This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. TODO: compare how our Python \verb+c_{k}+ methods compares with the array \verb+c_k_arr+ method in terms of root accuracy and precision.
+
+\begin{table}
+	%TODO float this
+	\begin{tabular}{ c c c }
+		$n$ & $x_{n}^{\mathrm{comp}}$ & $x_{n}^{\mathrm{ref}}$\\
+		\hline
+		1  & -2.3381074104 & -2.3381074101\\
+		2  & -4.0879494441 & -4.0879494438\\
+		3  & -5.5205598280 & -5.5205598278\\
+		4  & -6.7867080900 & -6.7867080898\\
+		5  & -7.9441335871 & -7.9441335869\\
+		6  & -9.0226508533 & -9.0226508531\\
+		7  & -10.0401743416 & -10.0401743414\\
+		8  & -11.0085243037 & -11.0085243036\\
+		9  & -11.9360155632 & -11.9360155631\\
+		10 & -12.8287767529 & -12.8287767527
+	\end{tabular}
+	\caption{Roots of \Ai{x}. Computed are $x_{n}^{\mathrm{comp}}$, the reference roots~\cite{ref:abramowitz} are $x_{n}^{\mathrm{ref}}$. The difference between the two is $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}} \sim \num{e-10}$ for all roots.}
+	\label{tab:roots}
+\end{table}
+
 \section{Root Finding Algorithms}\label{sec:algorithms}
 
 
