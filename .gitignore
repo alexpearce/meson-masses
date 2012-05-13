@@ -6,3 +6,5 @@
 **.toc
 **.t1
 report/*.pdf
+*.bbl
+*.blg
