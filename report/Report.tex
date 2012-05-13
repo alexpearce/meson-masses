@@ -112,7 +112,7 @@ In order to do this we shall approximate Arie's function with three different re
 
 The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
 
-For small $\mod{x}$ we have
+For small $\mod{x}$ we have~\cite{ref:abramowitz}
 
 \begin{equation}\label{eqn:airyfirst}
 \Ai{x} = 0.3550280538f(x) - 0.2588194037g(x),
@@ -133,7 +133,7 @@ and
 	\end{split}
 \end{equation}
 
-This is the Chebyshev expansion of Airy's function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
+Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy's function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
 
 We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} and the first, second, and third approximation of Airy's function respectively (keeping in mind that each representation is appropriate for different values of $x$).
 
@@ -213,81 +213,8 @@ where $c_{0} = 1$.
 	\label{fig:data}
 \end{figure}
 
-
-\begin{thebibliography}{9}
-	% TODO: delete any of these if unused once finished
-
-	% QCD
-	\bibitem{ref:iaitchison}
-	I. J. R. Aitchenson \& A. J. G. Hey,
-	\emph{Gauge Theories in Particle Physics, Volume II: QCD and the Electroweak Theory},
-	Institute of Physics Publishing, Bristol, UK,
-	3rd Edition,
-	2003.
-	
-	% Meson mass formula
-  \bibitem{ref:buchmuller}
-  W. Buchm\"{u}ller \& S.-H. H. Tye,
-  ``Quarkonia and quantum chromodynamics''
-  \emph{\PR D} \textbf{24},
-  Issue 1,
-  p132-156 (1981).
-	
-	% PHYS6017 course notes
-	\bibitem{ref:gdaniell}
-  G. J. Daniell,
-  \emph{PHYS6017 Course Notes},
-  University of Southampton, Southampton, UK,
-  2011.
-  
-  % Different potential forms V(r), including the Cornell potential
-  \bibitem{ref:eichten}
-  E. J. Eichten \& C. Quigg,
-  ``Quarkonium wave functions at the origin''
-  \emph{\PR D} \textbf{52},
-  Issue 3,
-  p1726-1728 (1995).
-  
-  % Chebyshev expansion
-	\bibitem{ref:agil}
-  A. Gil, J. Segura \& N. M. Temme,
-  \emph{Numerical Methods for Special Functions},
-  Society for Industrial and Applied Mathematics, Philadelphia PA, USA,
-  $1$st Edition,
-  2007.
-  
-  % Colour theory
-  \bibitem{ref:dgriffithsparticles}
-  D. Griffiths,
-  \emph{Introduction to Elementary Particles},
-  Wiley-VCH, Weinheim,
-  2nd Edition,
-  2003.
-  
-  % The benchmark QM book
-  \bibitem{ref:dgriffithsquantum}
-  D. Griffiths,
-  \emph{Introduction to Quantum Mechanics},
-  Wiley-VCH, Weinheim,
-  6th Edition,
-  2011.
-  
-  % Ridder's method algorithm
-  \bibitem{ref:nr}
-  W. H. Press et al.,
-  \emph{Numerical Recipes: The Art of Scientific Computing},
-  Cambridge University Press, Cambridge, UK,
-  $3$rd Edition,
-  2007.
-  
-  % A nice introduction on charmonium, ideas translate to quarkonium
-  \bibitem{ref:mvoloshin}
-  M.B. Voloshin,
-  ``Charmonium'',
-  \emph{Prog.\ Part.\ Nucl.\ Phys.\ } \textbf{61},
-  Issue 2,
-  p455-511 (2008).
-  
-\end{thebibliography}
+% Woo Bibtex!
+\bibliographystyle{IEEE}
+\bibliography{bibliography}
 
 \end{document}
