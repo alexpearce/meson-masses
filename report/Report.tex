@@ -30,7 +30,7 @@
 
 
 \begin{abstract}
-We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of Airy's functions $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then compared against experimentally obtained excited meson masses to find a charm mass of $m_{c} = 1.213\GeV$ and a bottom mass of $m_{b} = 4.505\GeV$. The linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = TODO$.
+We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of Airy's functions $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then compared against experimentally obtained excited meson masses to find a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
 \end{abstract}
 
 
@@ -192,6 +192,7 @@ Despite a limited data set for the Charmonium masses, both sets of plotted point
 m_{c} = 1.21\GeV&,\quad m_{b} = 4.51\GeV,\\
 k_{c} = \num{3.11e11}\si{\joule\per\metre}&,\quad k_{b} = \num{4.08e11}\si{\joule\per\metre}.
 \end{align*}
+This gives a difference in the potential strength $\Delta k = \mod{k_{c} - k_{b}} = 0.97\si{\joule\per\metre}$.
 
 The above data presumes absolute accuracy in the experimental data~\cite{ref:gdaniell} used. Without errors on the experimental meson masses it is difficult to provide meaningful errors with our results.
 
@@ -203,17 +204,25 @@ Data does exist for the charm and bottom quark masses~\cite{ref:pdg}, giving $m_
 
 These agree quite well with our data, differing by $7\%$ for the charm and $4\%$ for the bottom quark. In both cases our data gives a slightly higher quark mass.
 
-We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding research on them and meaningful errors on our own data. Secondly, the simple form of the binding potential $V(r)$ is unlikely to represent the true QCD binding potential. A better fit to other data may have been achieved with another potential such as the Cornell potential~\cite{ref:eichten}
+We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding research on them and meaningful errors on our own data. Fewer data points for \ccbar compared with \bbbar (3 against 6) also hinders our analysis as the charmonium spectrum may become nonlinear after the data points given.
+
+Secondly, the simple form of the binding potential $V(r)$ is unlikely to represent the true QCD binding potential. A better agreement with other quark mass data may have been achieved with another potential such as the Cornell potential~\cite{ref:eichten}
 \[
 V(r) = \frac{a}{r} + br,
 \]
 or other, more complex, candidates.
 
-It is worthy of note however just how far the simple linear potential has bought us and also how well the Airy function approximations used performed.
+It is worthy of note however just how far the simple linear potential has bought us as well as how accurate the implementations of the Airy function approximations were.
 
 \section{Root Finding Algorithms}
 
-TODO: this.
+One point that was not discussed previously was the efficiency of the root finding algorithm we used (Ridder's method).
+
+We shall briefly explore of the performance of Ridder's method in comparison with two other algorithms: the secant method and Muller's method.
+
+It is an interesting sidenote to mention that Ridder's method is a false-positive method, which are generally considered more stable than a secant method. Further to this, Muller's method is based on the secant method.
+
+With this, we shall be able to compare and contrast the convergence rates and precision available in all three algorithms, and see how the supposed evolution of each method (secant to Muller's to Ridder's method) translates computationally.
 
 \section{Conclusions}
 
@@ -276,7 +285,7 @@ TODO: this.
 	\hspace*{-0.15\textwidth}
 	\centering
 	\includegraphics[scale=1.3]{experimental-numerical}
-	\caption{TODO: Caption here}
+	\caption{Plots of two sets of data points. The blue is the line of best fit of the bottomonium excited masses, the red is the line of best fit of the charmonium excited masses.}
 	\label{fig:data}
 \end{figure}
 
