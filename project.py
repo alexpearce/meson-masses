@@ -106,25 +106,29 @@ def c_k_arr(k):
   
   return c
 
+def zeta(x):
+  """The zeta function as used in the 2nd and 3rd approximations"""
+  return (2.0/3.0) * pow(x, 1.5)
+
 def airy_two(x, n = 5):
   """Computes the second approximation of Ai(x)"""
-  zeta      = (2.0/3.0) * pow(x, (3.0/2.0))
-  prefactor = 0.5 * pow(pi, -0.5) * pow(x, -0.25) * exp(-zeta)
+  z         = zeta(x)
+  prefactor = 0.5 * pow(pi, -0.5) * pow(x, -0.25) * exp(-z)
   
   s = zeros(n)
   c_k = c_k_arr(n)
   for i in range(n):
-    s[i] = pow(-1.0, i) * c_k[int(i)] * pow(zeta, -i)
+    s[i] = pow(-1.0, i) * c_k[int(i)] * pow(z, -i)
   
   return prefactor * sum(s)
   
 def airy_three(x, n = 5):
   """Computes the third approximation of Ai(x)"""
   mod_x = fabs(x)
-  zeta  = (2.0/3.0) * pow(mod_x, (1.5))
+  z     = zeta(mod_x)
   prefactor = pow(pi, -0.5) * pow(mod_x, -0.25)
   
-  trig_arg = zeta + (pi/4.0)
+  trig_arg = z + (pi/4.0)
   
   # Get the first 2*n+2 c_k coefficients
   c_k = c_k_arr((2*n) + 1)
@@ -132,8 +136,8 @@ def airy_three(x, n = 5):
   # Compute the first and second sum
   s_1, s_2 = zeros(n), zeros(n)
   for i in range(n):
-    s_1[i] = pow(-1.0, i) * c_k[int(2*i)] * pow(zeta, -2.0*i)
-    s_2[i] = pow(-1.0, i) * c_k[int((2*i) + 1)] * pow(zeta, -(2*i) - 1)
+    s_1[i] = pow(-1.0, i) * c_k[int(2*i)] * pow(z, -2.0*i)
+    s_2[i] = pow(-1.0, i) * c_k[int((2*i) + 1)] * pow(z, -(2*i) - 1)
   
   return prefactor * (sin(trig_arg)*sum(s_1) - cos(trig_arg)*sum(s_2))
 
@@ -159,7 +163,6 @@ def nice_example():
   plb.plot(a_three_rng, a_three)
   plb.show()
   
-nice_example()
 def find_roots(f, a, b, h = 0.01):
   """
   Returns tuples of (x_1, x_2), where between x_1 and x_2 Ai(x) = 0,
