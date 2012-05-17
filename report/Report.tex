@@ -30,13 +30,13 @@
 
 
 \begin{abstract}
-We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of Airy's functions $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then compared against experimentally obtained excited meson masses to find a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
+We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of Airy's functions $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
 \end{abstract}
 
 
 \section{Introduction}\label{sec:intro}
 
-A meson is a bound state of a quark and an antiquark. A neutral pion $\pi^{0}$, for example, is a quantum superposition of \uubar and \ddbar, specifically $1/\sqrt{2}(\uubar + \ddbar)$. Quarkonia are a subset of mesons which are comprised of a quark and its antiparticle \qqbar.\footnotemark\ A bound state of \ccbar is called charmonium and that of \bbbar is called bottomonium.
+A meson is a bound state of a quark and an antiquark. A neutral pion $\pi^{0}$, for example, is a quantum superposition of \uubar and \ddbar, specifically $\frac{1}{\sqrt{2}}(\uubar + \ddbar)$. Quarkonia are a subset of mesons which are comprised of a quark and its antiparticle \qqbar.\footnotemark\ A bound state of \ccbar is called charmonium and that of \bbbar is called bottomonium.
 
 % Meson/Quarkonium distinction
 \footnotetext{Note the distinction between a quark and \emph{any other} antiquark, such as $u\bar{s}$, and a quark and it's \emph{own antiparticle}, such as $\ccbar$. The latter is quarkonium, the former belongs in the broader category of mesons.}
@@ -44,9 +44,9 @@ A meson is a bound state of a quark and an antiquark. A neutral pion $\pi^{0}$, 
 Under the laws of QCD we cannot observe states of colour, only colourless states. Quarks and gluons (the gauge bosons of QCD) carry colour\footnotemark\ and hence cannot be observed on their own. This property of quarks and gluons is known as colour confinement. Because of colour confinement we cannot measure the quark mass directly and so must turn to indirect methods of measurement.
 
 % Quark and gluon colour
-\footnotetext{A quark carries one colour or anticolour such as red, green or antiblue ($r$, $g$ or $\bar{b}$) whilst a gluon carries a superposition of two one colour and one anticolour states such as red-antigreen and green-antired ($1/\sqrt{2}(r\bar{g} + g\bar{r})$). For an illuminating discussion on colour theory see Griffiths~\cite{ref:dgriffithsparticles}.}
+\footnotetext{A quark carries one colour or anticolour such as red, green or antiblue ($r$, $g$ or $\bar{b}$) whilst a gluon carries a superposition of two colour and anticolour states such as red-antigreen and green-antired ($\frac{1}{\sqrt{2}}(r\bar{g} + g\bar{r})$). For an informative discussion on colour theory see Griffiths~\cite{ref:dgriffithsparticles}.}
 
-As all mesons are colourless they are, in principle, observable. (They may decay extremely quickly or be very massive making them difficult to produce and/or observe, however.) We may  think that if we can measure the masses several different mesons then we could extract the constituent quark masses from the data, but the mass of a meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy we could then extract the individual quark masses from experimental meson data.
+As all mesons are colourless they are, in principle, observable. (However, they may decay extremely quickly or be very massive making them difficult to produce and/or observe.) We may think that if we can measure the masses of several different mesons then we could extract the constituent quark masses from the data, but the mass of a meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy we could then extract the individual quark masses from experimental meson data.
 
 We set out in section \ref{sec:schrodinger} by solving the Schr\"{o}dinger equation for quarkonium to find that its solution is Airy's function $\Ai{x}$, where the roots of this function are related to the binding energy of the \qqbar pair.
 
@@ -58,7 +58,7 @@ Our results will be presented in section \ref{sec:results}, followed by a brief 
 
 \section{Solving the Schr\"{o}dinger equation for \qqbar}\label{sec:schrodinger}
 
-We start by presuming that the bound \qqbar meson is massive enough such that we may use non-relativistic quantum mechanics, hence we employ the Schr\"{o}dinger equation. We solve the time-independent radial equation (cf.\ the Hydrogen atom~\cite{ref:dgriffithsquantum})
+We start by presuming that the bound \qqbar meson is massive enough such that we may use non-relativistic quantum mechanics ($\mod{\vec{p}} \muchless mc^{2}$), hence we can employ the Schr\"{o}dinger equation. We solve the time-independent radial equation (cf.\ the Hydrogen atom~\cite{ref:dgriffithsquantum})
 \begin{equation}\label{eqn:schrodinger}
 -\frac{\hbar^{2}}{2m}\left (
 	\frac{1}{r^{2}} \frac{\d{}}{\d{r}} \left (
@@ -68,25 +68,27 @@ We start by presuming that the bound \qqbar meson is massive enough such that we
 \right )
 + V(r)\psi = E\psi.
 \end{equation}
-Here $m$ is the so-called reduced mass (equal to half of each constituent quark mass e.g. $m_{c}/2$ for charmonium), $\ell$ is the orbital angular momentum quantum number, $V(r)$ is the binding potential, $\psi$ is the eigenwavefunction of the Hamiltonian $H$ and $E$ is the eigenvalue for $\phi$ under $H$. Note this is, as mentioned, an eigenvalue problem $H\psi=E\psi$.
+in order to find the set of energies $E$ for corresponding set of wavefunctions $\psi$.
+
+Here $m$ is the so-called reduced mass (equal to half of each constituent quark mass e.g. $m_{c}/2$ for charmonium), $\ell$ is the orbital angular momentum quantum number, $V(r)$ is the binding potential, $\psi$ is the eigenwavefunction of the Hamiltonian $H$ and $E$ is the eigenvalue for $\psi$ under $H$.
 
 \subsection{Assumptions}\label{ssec:assumptions}
 
 We shall investigate quarkonium states with zero angular momentum, that is $\ell = 0$. In addition we shall work in the aforementioned non-relativistic regime.
 
-The most crucial approximation we make is the form of the binding potential $V(r)$. We shall use a linear potential model $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass. We do not expect perfect result with such a simple potential, but do expect a reasonable agreement between our data and others.
+The most crucial approximation we make is the form of the binding potential $V(r)$. We shall use a linear potential model $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass. We do not expect perfect result with such a simple potential, but do expect a reasonable agreement between our data and other measurements of the quark masses~\cite{ref:pdg}.
 
 As we anticipate, the measured mass of a meson is not only the mass of its constituent quarks but also the binding energy of the bound system (via the mass-energy equivalence $E=mc^{2}$). Then, we assume a measured meson mass conforms to
 \begin{equation}\label{eqn:mesonmass}
-M_{n} = 2m_{q} + E_{n}
+M_{n} = 2m_{q} + E_{n},
 \end{equation}
-where $n$ refers to the $n$th \emph{excited state} of the meson~\cite{ref:buchmuller}. The excited states are analogous to those of an electron orbiting a proton: the bound quarks may occupy infinitely many quantised energy levels of increasing radial distance and increasing energy. It follows that equation \ref{eqn:mesonmass} represents the quarkonium \emph{spectrum}.
+where $n$ refers to the $n$th \emph{excited state} of the meson~\cite{ref:buchmuller} and $m_{q}$ is the quark mass, $q$ taking the values $c$ or $b$ for charm and bottom respectively. We are using natural units ($c = \hbar = 1$) so all terms are in \GeV. The excited states are analogous to those of an electron orbiting a proton: the bound quarks may occupy infinitely many quantised energy levels of increasing radial distance and increasing energy. It follows that equation \ref{eqn:mesonmass} represents the quarkonium \emph{spectrum}.
 
 We can plot our binding energies $E_{n}$ against the given quarkonium spectrum experimental data to find the quark masses $m_{q}$.
 
 \subsection{Manipulation}
 
-We may manipulate the Schr\"{o}dinger equation in to a much more manageable form. First, we apply our $\ell = 0$ assumption and make the change of variable $u = r\psi$
+We may manipulate the Schr\"{o}dinger equation in to a much more manageable form. First, we apply our $\ell = 0$ assumption and then simplify the expression by making the change of variable $u = r\psi$
 \[
 -\frac{\hbar^{2}}{2m}
  \frac{\d{^{2}u}}{\d{r}^{2}}
@@ -98,7 +100,7 @@ After moving the $Eu$ over to the left and making one further change of variable
 \end{equation}
 where we have chosen $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$.
 
-This is beneficial is several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is Airy's equation with solutions $y(x) = c\Ai{x} + d\Bi{x}$. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as Airy's function. We note that as $\Bi{x}$ becomes singular as $x$ tends to infinity it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `Airy's function') as the solution to our ODE.\footnotemark
+This is beneficial in several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is Airy's equation with solutions $y(x) = c\Ai{x} + d\Bi{x}$. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as Airy's functions. It is known that as $\Bi{x}$ becomes singular as $x$ tends to infinity~\cite{ref:abramowitz}, therefore it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `Airy's function') as the solution to our ODE.\footnotemark
 \[
 y(x) = \Ai{x}
 \]
@@ -109,12 +111,12 @@ y(x) = \Ai{x}
 
 \section{Approximation of \Ai{x}}\label{sec:approximation}
 
-We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find to roots of Airy's function. As $r = ax + b$, the $n$th root of Airy's function corresponds to
+We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find the roots of Airy's function. As $r = ax + b$, the $n$th root of Airy's function corresponds to
 \begin{equation}\label{eqn:rootexpression}
 \Ai{x} = 0 \quad\Rightarrow\quad x_{n} = -\frac{b}{a} = -E_{n}\sqrt[3]{\frac{\hbar^{2}}{2mk^{4}}}
 \end{equation}
 
-In order to do this we shall approximate Airy's function with three different representations. This is often necessary for analytical functions that vary their form along $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
+In order to do this we shall approximate Airy's function with three different representations. This is often necessary for analytical functions whose form varies with increasing $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
 
 The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
 
@@ -141,17 +143,17 @@ and
 
 Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy's function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
 
-We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} and the first, second, and third approximation of Airy's function respectively (keeping in mind that each representation is appropriate for different values of $x$).
+We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} as the first, second, and third approximation of Airy's function respectively (keeping in mind that each representation is appropriate for different values of $x$).
 
 A comparison of the different approximations is given in figure \ref{fig:approximations}. The data has been presented in such a way so as to illustrate how each approximations diverges outside a given range of $x$.
 
 The first approximation gives satisfactory result for approximately $-13 < x < 7$, the second for $x > 5$, and the third for $x < -4$. Clearly the roots of \Ai{x} are all negative, hence we shall not need the second approximation.
 
-We shall then use a combination of the first and third approximations, specifically the first for $-8 < x < 0$ and the third for $x < -8$.
+We shall then use a combination of the first and third approximations, specifically the first for $-8 < x < 0$ and the third for $x < -8$. The reason for choosing these particular ranges is that both series agree very well around this point. The third approximation is more appropriate for larger $-\mod{x}$, whilst the first approximation is more suited to smaller $\mod{x}$~\cite{ref:gdaniell}. `Larger' and `smaller' are ill-defined here however, so we choose a safe mid-point between where the two functions diverge to change which approximation we use.
 
 \subsection{Recursive Computation}\label{ssec:recursion}
 
-The expressions for the series expansions coefficients $c_{k}$ in equation \ref{eqn:ck} are clearly quite formidable, but they may take a cleaner form via recursive computation. The functions $f(x)$ and $g(x)$ in the first approximation of $\Ai{x}$ may also be treated recursively (see equations \ref{eqn:airyfirstf} and \ref{eqn:airyfirstg}).
+The expressions for the series expansion coefficients $c_{k}$ in equation \ref{eqn:ck} (see appendix \ref{app:approximations}) are clearly quite formidable, but they may take a cleaner form via recursive computation. The functions $f(x)$ and $g(x)$ in the first approximation of $\Ai{x}$ may also be treated recursively (see equations \ref{eqn:airyfirstf} and \ref{eqn:airyfirstg}).
 
 The advantages of recursive computation are many, but for our purposes they allow us to compute moderately small numbers that may involve large terms during computation.
 
@@ -161,9 +163,9 @@ For example, $f(x)$, as in equation \ref{eqn:airyfirstf}, carries a factorial in
 
 As the factorial is in the denominator, the final number will be small, but computing this by blindly calculating $x!$ will result in storing huge numbers in memory as the number of terms in the series increases. Modern computers can only handle numbers of a certain magnitude before they overflow, causing large numerical errors. Recursion stops the storage of large numbers in memory, preventing this problem.
 
-The derivation of the recursive forms of $f(x)$, $g(x)$, and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ in particular benefits from recursive computation as it prevents us having to calculate $216^{k}$, only requiring us to multiply successive terms by $1/216$. This is also much less expensive computationally). 
+The derivation of the recursive forms of $f(x)$, $g(x)$, and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ in particular benefits from recursive computation as it prevents us having to calculate $216^{k}$ for the $k$th term, only requiring us to multiply successive terms by $1/216$. This is also much less expensive computationally. 
 
-The standard computation of $c_{k}$ begins to diverge at $k = 7$, whereas the recursive computation returns to correct set of coefficients for at least $k = 20$.
+The standard computation of $c_{k}$ begins to diverge at $k = 7$ due to numerical errors, whereas the recursive computation returns the correct set of coefficients for at least $k = 20$.
 
 \subsection{Roots of \Ai{x}}
 
@@ -171,11 +173,11 @@ We have now reduced the task of solving the Schr\"{o}dinger equation (equation \
 
 In order to find the roots we shall `walk' along the function until the sign changes, in which case we know there is a root between the previous and current step $x_{n-1}$ and $x_{n}$.
 
-This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a number for the root (only two numbers which contain the root) nor would we have good performance (we would waste time walking along the parts of function without roots).
+This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a number for the root (the algorithm only returns two numbers between which there is a root) nor would we have good performance (we would waste time walking along the parts of function without roots).
 
 To remedy this, we shall use our walking procedure to find the bracketed roots, and then pass the bracket values to a numerical algorithm called Ridder's method~\cite{ref:nr}. Ridder's method accepts two values $x_{1}$ and $x_{2}$ for which $\Ai{x_{1} < x_{R} < x_{2}} = 0$ for some $x_{R}$, a root of Airy's function. It then iteratively finds the root of a function to a desired precision.
 
-By inspection of figure \ref{fig:approximations}, we see that the first root occurs just after $x = -2$. We shall then begin our walk at $x = -2$ and walk in step sizes of $-0.001$. This small step size is not expensive computation and gives the root finding algorithm a very small bracket within which to find the root, which should decrease runtime. 
+By inspection of figure \ref{fig:approximations}, we see that the first root occurs just after $x = -2$. We shall then begin our walk at $x = -2$ and walk in step sizes of $-0.001$. This small step size is not expensive computationally and gives the root finding algorithm a very small bracket within which to find the root, which should decrease runtime. 
 
 Once we have obtained the roots, the energy of the $n$th excited state of quarkonium may be found from equation \ref{eqn:rootexpression}
 \begin{equation}
@@ -188,22 +190,22 @@ A small selection of other root finding algorithms, along with Ridder's method, 
 
 \section{Results}\label{sec:results}
 
-The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$ match extremely well with the reference roots~\cite{ref:abramowitz}, in fact matching with the precision passed this Ridder's method.
+The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$, where $n$ refers to the $n$th root from the origin, match extremely well with the reference roots~\cite{ref:abramowitz}.
 
 This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. The difference between the computed and reference roots $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}}$ is of the order $\num{e-10}$, which is exactly the precision we told Ridder's method to use. It is a reasonable assumption that the approximations of Airy's function we used are capable of even more precision if desired.\footnotemark
 
-\footnotetext{The use of a precision of $\num{e-10}$ was twofold: the reference roots $x_{n}^{\mathrm{ref}}$ were given up to ten decimal places making comparison difficult, and the meson masses with which we compare the roots are given to three decimal places. Hence a precision larger than $\num{e-10}$ would have been superfluous.}
+\footnotetext{The use of a precision of $\num{e-10}$ was twofold: the reference roots $x_{n}^{\mathrm{ref}}$ were given up to ten decimal places making further comparison difficult, and the meson masses with which we compare the roots are given to three decimal places. A precision larger than $\num{e-10}$ would have been superfluous.}
 
-Given the experimental quarkonium spectra in table \ref{tab:mesonmasses}~\cite{ref:gdaniell}, the computed roots were plotted against the excited masses. The resulting plot is shown in figure \ref{fig:data}.
+Given the experimental quarkonia spectra in table \ref{tab:mesonmasses}~\cite{ref:gdaniell}, the computed roots were plotted against the excited masses. The resulting plot is shown in figure \ref{fig:data}.
 
-Despite a limited data set for the Charmonium masses, both sets of plotted points indicate a linear relationship, which supports our use of a liner potential. Via equation \ref{eqn:mesonmass}, the intercept of the superimposed lines gives twice the quark mass $m_{q}$, whilst the slopes allow us to calculate $k$. Using this we present
+Despite a limited data set for the charmonium masses, both sets of plotted points indicate a linear relationship, which supports our use of a liner potential. Via equation \ref{eqn:mesonmass}, the intercept of the superimposed lines gives twice the quark mass $m_{q}$, whilst the slopes allow us to calculate $k$. Using this we present
 \begin{align*}
 m_{c} = 1.21\GeV&,\quad m_{b} = 4.51\GeV,\\
 k_{c} = \num{3.11e11}\si{\joule\per\metre}&,\quad k_{b} = \num{4.08e11}\si{\joule\per\metre}.
 \end{align*}
 This gives a difference in the potential strength $\Delta k = \mod{k_{c} - k_{b}} = 0.97\si{\joule\per\metre}$.
 
-The above data presumes absolute accuracy in the experimental data~\cite{ref:gdaniell} used. Without errors on the experimental meson masses it is difficult to provide meaningful errors with our results.
+The above data presumes absolute accuracy in the experimental data~\cite{ref:gdaniell} used. Without errors on the experimental meson masses it is difficult to execute meaningful error analysis on our results.
 
 \subsection{Comparison}
 
@@ -213,15 +215,15 @@ Data does exist for the charm and bottom quark masses~\cite{ref:pdg}, giving $m_
 
 These agree quite well with our data, differing by $7\%$ for the charm and $4\%$ for the bottom quark. In both cases our data gives a slightly higher quark mass.
 
-We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding both research on them and meaningful errors with our own data. Fewer data points for \ccbar compared with \bbbar (3 against 6) also hinders our analysis as the charmonium spectrum may become nonlinear after the data points given.
+We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding both research on them and meaningful error analysis on our own data. Fewer data points for \ccbar compared with \bbbar (3 against 6) also hinders our analysis as the charmonium spectrum may become nonlinear after the data points given.
 
-Secondly, the simple form of the binding potential $V(r)$ is unlikely to represent the true QCD binding potential. A better agreement with other quark mass data may have been achieved with another potential such as the Cornell potential~\cite{ref:eichten}
+Secondly, the simple form of the binding potential $V(r)$ is unlikely to represent the true QCD binding potential. A better agreement with other quark mass data may have been achieved with another potential such as the Cornell potential~\cite{ref:eichten}, where $a$ and $b$ are fitted coefficients,
 \[
 V(r) = \frac{a}{r} + br,
 \]
 or other more complex candidates.
 
-It is worthy of note however how far the simple linear potential has bought us as well as how accurate the implementations of the Airy function approximations were.
+It is worthy of note however how far the simple linear potential has brought us as well as how accurate the implementations of the Airy's function approximations were.
 
 
 
@@ -229,31 +231,35 @@ It is worthy of note however how far the simple linear potential has bought us a
 
 One point that was not previously discussed was the efficiency of the root finding algorithm we used (Ridder's method).
 
-We shall briefly explore of the performance of Ridder's method in comparison with two other algorithms: the bisection and secant methods. The iterations for convergence and precision available in all three algorithms shall be compared to gauge which one is suitable functions \Ai{x}.
+We shall briefly explore the performance of Ridder's method in comparison with two other algorithms: the bisection and secant methods. The iterations for convergence and precision available in all three algorithms shall be compared to gauge which one is most suited for root finding in functions such as \Ai{x}.
+
+We shall assume a dimensionless variable $x$ for the purposes of this comparison.
 
 \subsection{Procedure}\label{ssec:procedure}
 
-Each method requires bracketing a root first. In order to create as fair a trial as possible, we shall pass the same bracketed root to each algorithm, and see how many iterations each method takes to reach a given precision.
+Each method requires bracketing a root first, i.e. finding two numbers between which lies a root. In order to create as fair a trial as possible, we shall pass the same bracketed root to each algorithm, and see how many iterations each method takes to reach a given precision.
 
 We arbitrarily choose the first root of Airy's function, bracketing between $x_{1} = -2.33$ and $x_{2} = -2.34$, and set the require accuracy of all algorithms to be $\pm\num{e-10}$.
 
 \subsection{Results}\label{ssec:results}
 
-The bisection method took 27 iterations to reach the desired accuracy, whilst the other two algorithms both took 3 iterations. All three methods returned the same value of  $-2.3381074104$, which is the first root correct to 9 decimal places, within the accuracy of $\num{e-10}$ (see table \ref{tab:roots} for the $n$th root values).
+The bisection method took 27 iterations to reach the desired accuracy, whilst the other two algorithms both took 3 iterations. All three methods returned the same value of  $-2.3381074104$, which is the first root correct to 9 decimal places. This is within the accuracy of $\num{e-10}$ (see table \ref{tab:roots} for the $n$th root values).
 
 The bisection method is arguably the most basic root finding algorithm. It is guaranteed to find the root~\cite{ref:nr} so is very robust, but clearly converges slowly when compared to more intelligent methods. Ridder's method and secant method perform very similarly, most likely because they are both members of the same family of algorithms (false position).
 
-The simple form of Airy's function combined with the close bracketing of the roots allows very fast convergence to the root.
+The simple form of Airy's function combined with the close bracketing of the roots allows very fast convergence to the root, however the three algorithms do not take equal times. Ridder's method took approximately twice as long as the secant method, which had an average runtime of $4\si{\milli\second}$ over 1000 runs, whilst the bisection method took nearly 6 times longer than the secant method.
+
+The relative complexity of Ridder's method~\cite{ref:nr} must negatively impact its runtime, and for the simple functional form of Airy's function in the negative $x$-axis this complexity is unnecessary. We conclude that the secant method is the most suitable for our purposes, and should be similar suitable for functions of a similar form to \Ai{x}, whilst bearing in mind that the average runtimes of all three algorithms were still well below one second.
 
 \section{Conclusions}\label{sec:conclusion}
 
-Through solving the Schr\"{o}dinger for bound quark-antiquark states, the Airy function \Ai{x} was found to be a solution given a linear potential $V = kr$ and zero angular momentum $\ell = 0$. Through numerical approximations of the Airy function, the roots were found in order to acquire the binding energies of the \qqbar system. The roots are given in table \ref{tab:mesonmasses}.
+Through solving the Schr\"{o}dinger equation for bound quark-antiquark states, Airy's function \Ai{x} was found to be a solution given a linear potential $V = kr$ and zero angular momentum $\ell = 0$. Through numerical approximations of Airy's function the roots were found in order to acquire the binding energies of the \qqbar system. The roots are given in table \ref{tab:mesonmasses}.
 
 The charm and bottom quark masses $m_{c} = 1.21\GeV$ and $m_{b} = 4.51\GeV$ were found from these roots, and the slope of the plot of the roots against the experimental meson masses allowed us to find the potential strength $k$. A difference of $\Delta k = 0.97 \si{\joule\per\metre}$ was found.
 
-Both values are within an acceptable limit from the reference masses~\cite{ref:pdg} of $\sim 5\%$. These errors were attributed to the lack of experimental charmonium spectrum data and a na\"{i}ve linear binding potential. 
+Both values are within an acceptable limit from the reference masses~\cite{ref:pdg} of $\sim 5\%$. These errors were attributed to the lack of experimental charmonium spectrum data and a naive linear binding potential. 
 
-Through comparisons of root finding algorithms, Ridder's method and secant method were found to be of comparable performance. We recommend either method for future use.
+Through comparisons of root finding algorithms (Ridder's, secant, and bisection methods), Ridder's and the secant method were found to resolve the roots to equal accuracy and precision. In addition, it was found that the secant method was twice as fast as Ridder's method. We recommend either method for future use, noting that for simple functions the complexity of Ridder's method can impact performance.
 
 
 
@@ -275,7 +281,7 @@ Through comparisons of root finding algorithms, Ridder's method and secant metho
 			9  & -11.9360155632 & -11.9360155631\\
 			10 & -12.8287767529 & -12.8287767527
 		\end{tabular}
-		\caption{Roots of \Ai{x}. Computed are $x_{n}^{\mathrm{comp}}$, the reference roots~\cite{ref:abramowitz} are $x_{n}^{\mathrm{ref}}$. The difference between the two is $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}} \sim \num{e-10}$ for all roots.}
+		\caption{The $n$th roots of \Ai{x}, from the origin, in dimensionless form. The computed roots are $x_{n}^{\mathrm{comp}}$ and the reference roots~\cite{ref:abramowitz} are $x_{n}^{\mathrm{ref}}$. The difference between the two is $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}}$ and is of the order $\num{e-10}$ for all roots.}
 		\label{tab:roots}
 	\end{center}
 \end{table}
