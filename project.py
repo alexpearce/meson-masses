@@ -10,6 +10,8 @@ from numpy import *
 from scipy.special import airy
 # Import a few maths functions
 from math import pow, factorial, fabs
+# Timing
+from time import time
 
 # Import our modules
 from lib.functions import *
@@ -255,3 +257,26 @@ def plot_points():
   plb.title("s-state meson masses")
 
   plb.show()
+
+def timer(function_str, times = 1):
+  """Evaluate the function_str `times` times."""
+  """Example usage:
+    rt = find_roots(airy_one, -3, -2, 0.01)[0]
+    timer("ridders_method(airy_one, -2.33, -2.34, 1e-10)", 1000)
+    timer("secant(airy_one, rt[0], rt[1], 1e-10)", 1000)
+    timer("bisection(airy_one, rt[0], rt[1], 1e-10)", 1000)
+    => Total time for 1000 trials was 4.33524703979 seconds.
+    => The average for one trial was 0.00433524703979
+    => ...
+  """
+
+  if times < 1: exit("times must be 1 or greater")
+
+  time_begin = time()
+  for i in range(times):
+    exec function_str
+  time_end = time()
+
+  diff = time_end - time_begin
+  print "Total time for {} trials was {} seconds.".format(times, diff)
+  print "The average for one trial was {}".format(diff/float(times))
