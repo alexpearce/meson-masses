@@ -30,7 +30,7 @@
 
 
 \begin{abstract}
-We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of the Airy function $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
+We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of the Airy function $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$. An extrapolation of the plotted data yielded predictions for the masses of currently unmeasured higher excited states of \ccbar and \bbbar.
 \end{abstract}
 
 
@@ -225,6 +225,14 @@ or other more complex candidates.
 
 It is worthy of note however how far the simple linear potential has brought us as well as how accurate the implementations of the Airy function $\Ai{x}$ approximations were.
 
+\subsection{Prediction of Higher Excited State Masses}\label{ssec:highermasses}
+
+As the assumption of a linear potential has worked well, we may extrapolate the plot forwards in order to predict the masses of higher excited quarkonia states.
+
+The above discussion highlights the differences between our quark masses, $m_{c}$ and $m_{b}$, and those obtained by others~\cite{ref:pdg}. It is clear the linear potential is only an approximation, but we can use it to predict as yet undiscovered excited quarkonia states by extrapolating the data forwards in energy.
+
+Our extrapolation yielded the excited state mass predictions as given in table \ref{tab:mesonmasses}. Given the inability the report errors as discussed, these predictions must carry a significant uncertainty.
+
 
 
 \section{Root Finding Algorithms}\label{sec:algorithms}
@@ -291,14 +299,17 @@ Through comparisons of root finding algorithms (Ridder's, secant, and bisection 
 		\begin{tabular}{ c c c c }
 			$n$ & \ccbar & & \bbbar\\
 			\hline
-			1 & 3.10 & & 9.46 \\
-			2 & 3.69 & & 10.02\\
-			3 & 4.04 & & 10.35\\
-			4 &      & & 10.57\\
-			5 &      & & 10.86\\
-			6 &      & & 11.02\\
+			1 & 3.10  & & 9.46 \\
+			2 & 3.69  & & 10.02\\
+			3 & 4.04  & & 10.35\\
+			4 & 4.44* & & 10.57\\
+			5 & 4.78* & & 10.86\\
+			6 & 5.11* & & 11.02\\
+			7 &       & & 11.32*\\
+			8 &       & & 11.54*\\
+			9 &       & & 11.75*\\
 		\end{tabular}
-		\caption{Quarkonium masses with $\ell = 0$ in \GeV~\cite{ref:gdaniell}.}
+		\caption{Quarkonium masses with $\ell = 0$ in \GeV~\cite{ref:gdaniell}. Those marked with an asterisk (*) are our predictions of higher excited state masses, as detailed in section \ref{ssec:highermasses}.}
 		\label{tab:mesonmasses}
 	\end{center}  
 \end{table}
@@ -319,7 +330,7 @@ Through comparisons of root finding algorithms (Ridder's, secant, and bisection 
 	\hspace*{-0.15\textwidth}
 	\centering
 	\includegraphics[scale=1.3]{experimental-numerical}
-	\caption{Plots of two sets of data points. The blue is the line of best fit of the bottomonium excited masses, the red is the line of best fit of the charmonium excited masses.}
+	\caption{Plots of two sets of data points. The blue is the line of best fit of the bottomonium excited masses, the red is the line of best fit of the charmonium excited masses. The black data points are the numerically obtained roots of \Ai{x} against the data of Daneill~\cite{ref:gdaniell}, whilst the red points are the extrapolated excited quarkonia masses (see section \ref{ssec:highermasses}).}
 	\label{fig:data}
 \end{figure}
 
