@@ -17,20 +17,20 @@
 \renewcommand{\d}[1]{\ensuremath{\,\operatorname{d}\!{#1}}}
 % Absolute value
 \renewcommand{\mod}[1]{\ensuremath{\lvert {#1} \rvert}}
-% Airys functions Ai(x) and Bi(x)
+% Airy functions Ai(x) and Bi(x)
 \newcommand{\Ai}[1]{\ensuremath{\operatorname{Ai}({#1})}}
 \newcommand{\Bi}[1]{\ensuremath{\operatorname{Bi}({#1})}}
 
 \begin{document}
 
-\title{Masses of S-State Quarkonium via the Roots of Airy's Function $\Ai{x}$}
+\title{Masses of S-State Quarkonium via the Roots of the Airy Function $\Ai{x}$}
 \author{Alex Pearce}
 \date{\today}
 \maketitle
 
 
 \begin{abstract}
-We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of Airy's functions $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
+We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of the Airy function $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$.
 \end{abstract}
 
 
@@ -48,7 +48,7 @@ Under the laws of QCD we cannot observe states of colour, only colourless states
 
 As all mesons are colourless they are, in principle, observable. (However, they may decay extremely quickly or be very massive making them difficult to produce and/or observe.) We may think that if we can measure the masses of several different mesons then we could extract the constituent quark masses from the data, but the mass of a meson is not just the sum of the `bare masses' of the quarks inside; it is this bare mass plus the binding energy between the two quarks. This leads us to conclude that if we could obtain the binding energy we could then extract the individual quark masses from experimental meson data.
 
-We set out in section \ref{sec:schrodinger} by solving the Schr\"{o}dinger equation for quarkonium to find that its solution is Airy's function $\Ai{x}$, where the roots of this function are related to the binding energy of the \qqbar pair.
+We set out in section \ref{sec:schrodinger} by solving the Schr\"{o}dinger equation for quarkonium to find that its solution is the Airy function $\Ai{x}$, where the roots of this function are related to the binding energy of the \qqbar pair.
 
 We will find the roots via a numerical algorithm in section \ref{sec:approximation}, and then plot these roots against experimental data of meson masses. The strength of the binding potential $V=kr$ and the charm and bottom quark masses $m_{c}$ and $m_{b}$ will be determined from this plot.
 
@@ -100,7 +100,7 @@ After moving the $Eu$ over to the left and making one further change of variable
 \end{equation}
 where we have chosen $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$.
 
-This is beneficial in several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is Airy's equation with solutions $y(x) = c\Ai{x} + d\Bi{x}$. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as Airy's functions. It is known that as $\Bi{x}$ becomes singular as $x$ tends to infinity~\cite{ref:abramowitz}, therefore it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `Airy's function') as the solution to our ODE.\footnotemark
+This is beneficial in several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is the Airy equation with solutions $y(x) = c\Ai{x} + d\Bi{x}$. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as the Airy functions. It is known that as $\Bi{x}$ becomes singular as $x$ tends to infinity~\cite{ref:abramowitz}, therefore it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `the Airy function' for simplicity) as the solution to our ODE.\footnotemark
 \[
 y(x) = \Ai{x}
 \]
@@ -111,14 +111,14 @@ y(x) = \Ai{x}
 
 \section{Approximation of \Ai{x}}\label{sec:approximation}
 
-We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find the roots of Airy's function. As $r = ax + b$, the $n$th root of Airy's function corresponds to
+We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find the roots of the Airy function. As $r = ax + b$, the $n$th root of the Airy function corresponds to
 \begin{equation}\label{eqn:rootexpression}
 \Ai{x} = 0 \quad\Rightarrow\quad x_{n} = -\frac{b}{a} = -E_{n}\sqrt[3]{\frac{\hbar^{2}}{2mk^{4}}}
 \end{equation}
 
-In order to do this we shall approximate Airy's function with three different representations. This is often necessary for analytical functions whose form varies with increasing $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
+In order to do this we shall approximate the Airy function with three different representations. This is often necessary for analytical functions whose form varies with increasing $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
 
-The three approximations for Airy's function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
+The three approximations for the Airy function $\Ai{x}$ are given here without a full explanation of terms, but are reproduced in full in appendix \ref{app:approximations}.
 
 For small $\mod{x}$ we have~\cite{ref:abramowitz}
 
@@ -141,9 +141,9 @@ and
 	\end{split}
 \end{equation}
 
-Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy's function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
+Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
 
-We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} as the first, second, and third approximation of Airy's function respectively (keeping in mind that each representation is appropriate for different values of $x$).
+We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} as the first, second, and third approximation of the Airy function respectively (keeping in mind that each representation is appropriate for different values of $x$).
 
 A comparison of the different approximations is given in figure \ref{fig:approximations}. The data has been presented in such a way so as to illustrate how each approximations diverges outside a given range of $x$.
 
@@ -169,13 +169,13 @@ The standard computation of $c_{k}$ begins to diverge at $k = 7$ due to numerica
 
 \subsection{Roots of \Ai{x}}
 
-We have now reduced the task of solving the Schr\"{o}dinger equation (equation \ref{eqn:schrodinger}) to numerically approximating and then finding the roots of Airy's function.
+We have now reduced the task of solving the Schr\"{o}dinger equation (equation \ref{eqn:schrodinger}) to numerically approximating and then finding the roots of the Airy function.
 
 In order to find the roots we shall `walk' along the function until the sign changes, in which case we know there is a root between the previous and current step $x_{n-1}$ and $x_{n}$.
 
 This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a number for the root (the algorithm only returns two numbers between which there is a root) nor would we have good performance (we would waste time walking along the parts of function without roots).
 
-To remedy this, we shall use our walking procedure to find the bracketed roots, and then pass the bracket values to a numerical algorithm called Ridder's method~\cite{ref:nr}. Ridder's method accepts two values $x_{1}$ and $x_{2}$ for which $\Ai{x_{1} < x_{R} < x_{2}} = 0$ for some $x_{R}$, a root of Airy's function. It then iteratively finds the root of a function to a desired precision.
+To remedy this, we shall use our walking procedure to find the bracketed roots, and then pass the bracket values to a numerical algorithm called Ridder's method~\cite{ref:nr}. Ridder's method accepts two values $x_{1}$ and $x_{2}$ for which $\Ai{x_{1} < x_{R} < x_{2}} = 0$ for some $x_{R}$, a root of the Airy function. It then iteratively finds the root of a function to a desired precision.
 
 By inspection of figure \ref{fig:approximations}, we see that the first root occurs just after $x = -2$. We shall then begin our walk at $x = -2$ and walk in step sizes of $-0.001$. This small step size is not expensive computationally and gives the root finding algorithm a very small bracket within which to find the root, which should decrease runtime. 
 
@@ -190,9 +190,9 @@ A small selection of other root finding algorithms, along with Ridder's method, 
 
 \section{Results}\label{sec:results}
 
-The roots of Airy's function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$, where $n$ refers to the $n$th root from the origin, match extremely well with the reference roots~\cite{ref:abramowitz}.
+The roots of the Airy function as found by Ridder's method are given in table \ref{tab:roots}.   Ridder's method was passed a precision of $\num{e-10}$. It is clear that our computed roots $x_{n}^{\mathrm{comp}}$, where $n$ refers to the $n$th root from the origin, match extremely well with the reference roots~\cite{ref:abramowitz}.
 
-This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. The difference between the computed and reference roots $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}}$ is of the order $\num{e-10}$, which is exactly the precision we told Ridder's method to use. It is a reasonable assumption that the approximations of Airy's function we used are capable of even more precision if desired.\footnotemark
+This excellent agreement shows that the representations of \Ai{x} in equations \ref{eqn:airyfirst} and \ref{eqn:airythird} must give very accurate and precise approximations. The difference between the computed and reference roots $\Delta x_{n} = x_{n}^{\mathrm{comp}} - x_{n}^{\mathrm{ref}}$ is of the order $\num{e-10}$, which is exactly the precision we told Ridder's method to use. It is a reasonable assumption that the approximations of the Airy function we used are capable of even more precision if desired.\footnotemark
 
 \footnotetext{The use of a precision of $\num{e-10}$ was twofold: the reference roots $x_{n}^{\mathrm{ref}}$ were given up to ten decimal places making further comparison difficult, and the meson masses with which we compare the roots are given to three decimal places. A precision larger than $\num{e-10}$ would have been superfluous.}
 
@@ -223,7 +223,7 @@ V(r) = \frac{a}{r} + br,
 \]
 or other more complex candidates.
 
-It is worthy of note however how far the simple linear potential has brought us as well as how accurate the implementations of the Airy's function approximations were.
+It is worthy of note however how far the simple linear potential has brought us as well as how accurate the implementations of the Airy function $\Ai{x}$ approximations were.
 
 
 
@@ -239,7 +239,7 @@ We shall assume a dimensionless variable $x$ for the purposes of this comparison
 
 Each method requires bracketing a root first, i.e. finding two numbers between which lies a root. In order to create as fair a trial as possible, we shall pass the same bracketed root to each algorithm, and see how many iterations each method takes to reach a given precision.
 
-We arbitrarily choose the first root of Airy's function, bracketing between $x_{1} = -2.33$ and $x_{2} = -2.34$, and set the require accuracy of all algorithms to be $\pm\num{e-10}$.
+We arbitrarily choose the first root of the Airy function, bracketing between $x_{1} = -2.33$ and $x_{2} = -2.34$, and set the require accuracy of all algorithms to be $\pm\num{e-10}$.
 
 \subsection{Results}\label{ssec:results}
 
@@ -247,13 +247,13 @@ The bisection method took 27 iterations to reach the desired accuracy, whilst th
 
 The bisection method is arguably the most basic root finding algorithm. It is guaranteed to find the root~\cite{ref:nr} so is very robust, but clearly converges slowly when compared to more intelligent methods. Ridder's method and secant method perform very similarly, most likely because they are both members of the same family of algorithms (false position).
 
-The simple form of Airy's function combined with the close bracketing of the roots allows very fast convergence to the root, however the three algorithms do not take equal times. Ridder's method took approximately twice as long as the secant method, which had an average runtime of $4\si{\milli\second}$ over 1000 runs, whilst the bisection method took nearly 6 times longer than the secant method.
+The simple form of the Airy function combined with the close bracketing of the roots allows very fast convergence to the root, however the three algorithms do not take equal times. Ridder's method took approximately twice as long as the secant method, which had an average runtime of $4\si{\milli\second}$ over 1000 runs, whilst the bisection method took nearly 6 times longer than the secant method.
 
-The relative complexity of Ridder's method~\cite{ref:nr} must negatively impact its runtime, and for the simple functional form of Airy's function in the negative $x$-axis this complexity is unnecessary. We conclude that the secant method is the most suitable for our purposes, and should be similar suitable for functions of a similar form to \Ai{x}, whilst bearing in mind that the average runtimes of all three algorithms were still well below one second.
+The relative complexity of Ridder's method~\cite{ref:nr} must negatively impact its runtime, and for the simple functional form of the Airy function in the negative $x$-axis this complexity is unnecessary. We conclude that the secant method is the most suitable for our purposes, and should be similar suitable for functions of a similar form to \Ai{x}, whilst bearing in mind that the average runtimes of all three algorithms were still well below one second.
 
 \section{Conclusions}\label{sec:conclusion}
 
-Through solving the Schr\"{o}dinger equation for bound quark-antiquark states, Airy's function \Ai{x} was found to be a solution given a linear potential $V = kr$ and zero angular momentum $\ell = 0$. Through numerical approximations of Airy's function the roots were found in order to acquire the binding energies of the \qqbar system. The roots are given in table \ref{tab:mesonmasses}.
+Through solving the Schr\"{o}dinger equation for bound quark-antiquark states, the Airy function \Ai{x} was found to be a solution given a linear potential $V = kr$ and zero angular momentum $\ell = 0$. Through numerical approximations of the Airy function the roots were found in order to acquire the binding energies of the \qqbar system. The roots are given in table \ref{tab:mesonmasses}.
 
 The charm and bottom quark masses $m_{c} = 1.21\GeV$ and $m_{b} = 4.51\GeV$ were found from these roots, and the slope of the plot of the roots against the experimental meson masses allowed us to find the potential strength $k$. A difference of $\Delta k = 0.97 \si{\joule\per\metre}$ was found.
 
