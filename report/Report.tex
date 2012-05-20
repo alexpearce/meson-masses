@@ -30,7 +30,7 @@
 
 
 \begin{abstract}
-We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of the Airy function $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited meson masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$. An extrapolation of the plotted data yielded predictions for the masses of currently unmeasured higher excited states of \ccbar and \bbbar.
+We solve the Schr\"{o}dinger equation for $\ell = 0$ bound charm-anticharm \ccbar and bottom-antibottom \bbbar states in order to find the charm and bottom quark masses. The eigenvalues of the Hamiltonian may be found by finding the roots of the Airy function $\Ai{x}$ and so a numerical approach, that of Ridder's method, was used to find these roots. The roots were then plotted against experimentally obtained excited quarkonium masses~\cite{ref:gdaniell} allowing us to deduce a charm mass of $m_{c} = 1.21\GeV$ and a bottom mass of $m_{b} = 4.51\GeV$. The assumed linear radial potential $V = kr$ was found to differ slightly in strength for \ccbar and \bbbar with $\Delta k = 0.97\si{\joule\per\metre}$. An extrapolation of the plotted data yielded predictions for the masses of currently unmeasured higher excited states of \ccbar and \bbbar.
 \end{abstract}
 
 
@@ -70,19 +70,19 @@ We start by presuming that the bound \qqbar meson is massive enough such that we
 \end{equation}
 in order to find the set of energies $E$ for corresponding set of wavefunctions $\psi$.
 
-Here $m$ is the so-called reduced mass (equal to half of each constituent quark mass e.g. $m_{c}/2$ for charmonium), $\ell$ is the orbital angular momentum quantum number, $V(r)$ is the binding potential, $\psi$ is the eigenwavefunction of the Hamiltonian $H$ and $E$ is the eigenvalue for $\psi$ under $H$.
+Here $m$ is the so-called reduced mass (equal to half of each constituent quark mass e.g. $m_{c}/2$ for charmonium), $\ell$ is the orbital angular momentum quantum number, $V(r)$ is the binding potential, $\psi$ is the eigenwavefunction of the Hamiltonian $H$, and $E$ is the eigenvalue for $\psi$ under $H$.
 
 \subsection{Assumptions}\label{ssec:assumptions}
 
 We shall investigate quarkonium states with zero angular momentum, that is $\ell = 0$. In addition we shall work in the aforementioned non-relativistic regime.
 
-The most crucial approximation we make is the form of the binding potential $V(r)$. We shall use a linear potential model $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass. We do not expect perfect result with such a simple potential, but do expect a reasonable agreement between our data and other measurements of the quark masses~\cite{ref:pdg}.
+The most crucial approximation we make is the form of the binding potential $V(r)$. We shall use a linear potential model $V(r) = kr$ where $k$ is some real coefficient. The value of $k$ is not known but may be deduced using the relation between meson mass and quark mass. We do not expect perfect results with such a simple potential, but do expect a reasonable agreement between our data and other measurements of the quark masses~\cite{ref:pdg}.
 
-As we anticipate, the measured mass of a meson is not only the mass of its constituent quarks but also the binding energy of the bound system (via the mass-energy equivalence $E=mc^{2}$). Then, we assume a measured meson mass conforms to
+As we anticipate, the measured mass of a meson is not only the mass of its constituent quarks but also the binding energy of the bound system (via the mass-energy equivalence $E=mc^{2}$). Then, we assume that a measured meson mass will conform to
 \begin{equation}\label{eqn:mesonmass}
 M_{n} = 2m_{q} + E_{n},
 \end{equation}
-where $n$ refers to the $n$th \emph{excited state} of the meson~\cite{ref:buchmuller} and $m_{q}$ is the quark mass, $q$ taking the values $c$ or $b$ for charm and bottom respectively. We are using natural units ($c = \hbar = 1$) so all terms are in \GeV. The excited states are analogous to those of an electron orbiting a proton: the bound quarks may occupy infinitely many quantised energy levels of increasing radial distance and increasing energy. It follows that equation \ref{eqn:mesonmass} represents the quarkonium \emph{spectrum}.
+where $n$ refers to the $n$th \emph{excited state} of the meson~\cite{ref:buchmuller} and $m_{q}$ is the quark mass, $q$ taking the values $c$ or $b$ for charm and bottom respectively. We are using natural units ($c = \hbar = 1$) so all terms are in \GeV. The excited states are analogous to those of an electron orbiting a proton: the bound quarks may occupy very many quantised energy levels of increasing radial distance and increasing energy. It follows that equation \ref{eqn:mesonmass} represents the quarkonium \emph{spectrum}.
 
 We can plot our binding energies $E_{n}$ against the given quarkonium spectrum experimental data to find the quark masses $m_{q}$.
 
@@ -100,9 +100,9 @@ After moving the $Eu$ over to the left and making one further change of variable
 \end{equation}
 where we have chosen $a = \sqrt[3]{2mk/\hbar^{2}}$ and $b = E/k$.
 
-This is beneficial in several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is the Airy equation with solutions $y(x) = c\Ai{x} + d\Bi{x}$. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as the Airy functions. It is known that as $\Bi{x}$ becomes singular as $x$ tends to infinity~\cite{ref:abramowitz}, therefore it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `the Airy function' for simplicity) as the solution to our ODE.\footnotemark
+This is beneficial in several ways. Not only has the problem been reduced to a single order ordinary differential equation (ODE), the ODE is well studied and analytically solvable. In particular, equation \ref{eqn:airys} is the Airy equation with solutions $u(x) = c\Ai{x} + d\Bi{x}$~\cite{ref:abramowitz}. The two solutions $\Ai{x}$ and $\Bi{x}$ are known as the Airy functions. It is known that as $\Bi{x}$ becomes singular as $x$ tends to infinity~\cite{ref:abramowitz}, therefore it is a non-physical solution and so $d = 0$. This leaves us with $\Ai{x}$ (referred to from now on as `the Airy function' for simplicity) as the solution to our ODE\footnotemark
 \[
-y(x) = \Ai{x}
+u(x) = \Ai{x}.
 \]
 
 \footnotetext{$\Ai{x} \to 0$ as $x \to \pm\infty$.}
@@ -111,9 +111,9 @@ y(x) = \Ai{x}
 
 \section{Approximation of \Ai{x}}\label{sec:approximation}
 
-We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{x = 0} = 0$, i.e.\ we need to find the roots of the Airy function. As $r = ax + b$, the $n$th root of the Airy function corresponds to
+We require that as $r \to 0$ our wavefunction $\psi$ remains finite. As $u = r\psi$, it follows that $u \to 0$ as $r \to 0$. We must now require that $\Ai{r = 0} = 0$, i.e.\ we need to find the roots of the Airy function. As $r = ax + b$, the $n$th root of the Airy function corresponds to
 \begin{equation}\label{eqn:rootexpression}
-\Ai{x} = 0 \quad\Rightarrow\quad x_{n} = -\frac{b}{a} = -E_{n}\sqrt[3]{\frac{\hbar^{2}}{2mk^{4}}}
+\Ai{r} = 0 \quad\Rightarrow\quad x_{n} = -\frac{b}{a} = -E_{n}\sqrt[3]{\frac{\hbar^{2}}{2mk^{4}}}
 \end{equation}
 
 In order to do this we shall approximate the Airy function with three different representations. This is often necessary for analytical functions whose form varies with increasing $x$, e.g.\ changing from oscillatory to exponential, hence different expansions are favoured for different ranges in $x$.
@@ -137,11 +137,11 @@ and
 		\Bigl(
 			&\sin{(\zeta + \frac{\pi}{4})}\sum\limits_{k=0}(-1)^{k}c_{2k}\zeta^{-2k} -\\
 			&\cos{(\zeta + \frac{\pi}{4})}\sum\limits_{k=0}(-1)^{k}c_{2k+1}\zeta^{-(2k+1)}
-		\Bigr),
+		\Bigr).
 	\end{split}
 \end{equation}
 
-Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations up to around $k = 5$.
+Equations \ref{eqn:airysecond} and \ref{eqn:airythird} are the Chebyshev expansions of Airy function $\Ai{x}$~\cite{ref:agil}. The coefficients $c_{k}$ (see equation \ref{eqn:ck}) are in fact divergent, but the series expansions give good approximations for small $k$.
 
 We will refer to equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} as the first, second, and third approximation of the Airy function respectively (keeping in mind that each representation is appropriate for different values of $x$).
 
@@ -157,13 +157,13 @@ The expressions for the series expansion coefficients $c_{k}$ in equation \ref{e
 
 The advantages of recursive computation are many, but for our purposes they allow us to compute moderately small numbers that may involve large terms during computation.
 
-For example, $f(x)$, as in equation \ref{eqn:airyfirstf}, carries a factorial in the denominator of each term. The factorial function $n!$ grows extremely rapidly with $n$,\footnotemark~ but if we note that each factorial term is simply $(n+3)!$, where $n$ is the factorial argument of the \emph{previous} term, all we have to do to find the next term is multiply the previous term by $(n+1)(n+2)(n+3)$.
+For example, $f(x)$, as in equation \ref{eqn:airyfirstf}, carries a factorial in the denominator of each term. The factorial function $n!$ grows extremely rapidly with $n$,\footnotemark~ but if we note that each factorial term is simply $(n+3)!$, where $n$ is the factorial argument of the \emph{previous} term, all we have to do to find the next term is divide the previous term by $(n+1)(n+2)(n+3)$.
 
 \footnotetext{Interestingly, the factorial $n!$ grows even faster than the exponential function $e^{n}$.}
 
-As the factorial is in the denominator, the final number will be small, but computing this by blindly calculating $x!$ will result in storing huge numbers in memory as the number of terms in the series increases. Modern computers can only handle numbers of a certain magnitude before they overflow, causing large numerical errors. Recursion stops the storage of large numbers in memory, preventing this problem.
+As the factorial is in the denominator, the final number will be small, but computing this by blindly calculating $x!$ will result in storing huge numbers in memory as the number of terms in the series increases. Modern computers can only handle numbers of a certain magnitude before they overflow, causing large numerical errors. We can use recursion to reduce the storage of large numbers in memory, preventing this problem.
 
-The derivation of the recursive forms of $f(x)$, $g(x)$, and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ in particular benefits from recursive computation as it prevents us having to calculate $216^{k}$ for the $k$th term, only requiring us to multiply successive terms by $1/216$. This is also much less expensive computationally. 
+The recursive forms of $f(x)$, $g(x)$, and the coefficients $c_{k}$ are given in appendix \ref{app:recursion}. Note that $c_{k}$ in particular benefits from recursive computation as it prevents us having to calculate $216^{k}$ for the $k$th term, only requiring us to multiply successive terms by $1/216$. This is also much less expensive computationally. 
 
 The standard computation of $c_{k}$ begins to diverge at $k = 7$ due to numerical errors, whereas the recursive computation returns the correct set of coefficients for at least $k = 20$.
 
@@ -173,7 +173,7 @@ We have now reduced the task of solving the Schr\"{o}dinger equation (equation \
 
 In order to find the roots we shall `walk' along the function until the sign changes, in which case we know there is a root between the previous and current step $x_{n-1}$ and $x_{n}$.
 
-This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a number for the root (the algorithm only returns two numbers between which there is a root) nor would we have good performance (we would waste time walking along the parts of function without roots).
+This root finding algorithm is extremely simple, and quite useless in that it cannot converge. We may decrease the step size of the walk in order to add more precision to the bracketed root, but we still wouldn't have a single number for the root (the algorithm only returns two numbers between which there is a root) nor would we have good performance (we would waste time walking along the parts of function without roots).
 
 To remedy this, we shall use our walking procedure to find the bracketed roots, and then pass the bracket values to a numerical algorithm called Ridder's method~\cite{ref:nr}. Ridder's method accepts two values $x_{1}$ and $x_{2}$ for which $\Ai{x_{1} < x_{R} < x_{2}} = 0$ for some $x_{R}$, a root of the Airy function. It then iteratively finds the root of a function to a desired precision.
 
@@ -181,7 +181,7 @@ By inspection of figure \ref{fig:approximations}, we see that the first root occ
 
 Once we have obtained the roots, the energy of the $n$th excited state of quarkonium may be found from equation \ref{eqn:rootexpression}
 \begin{equation}
-E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}
+E_{n} = -x_{n} \sqrt[3]{\frac{2mk^{4}}{\hbar^{2}}}.
 \end{equation}
 
 A small selection of other root finding algorithms, along with Ridder's method, are compared in section \ref{sec:algorithms}.
@@ -209,11 +209,11 @@ The above data presumes absolute accuracy in the experimental data~\cite{ref:gda
 
 \subsection{Comparison}
 
-Data does exist for the charm and bottom quark masses~\cite{ref:pdg}, giving $m_{c} = 1.29^{+0.05}_{-0.11}\GeV$ and $m_{b} = 4.67^{+0.18}_{-0.06}\GeV$.\footnotemark
+Data does exist for the charm and bottom quark masses such as those by Nakamura et al.~\cite{ref:pdg}, giving $m_{c} = 1.29^{+0.05}_{-0.11}\GeV$ and $m_{b} = 4.67^{+0.18}_{-0.06}\GeV$.\footnotemark
 
 \footnotetext{We have used the 1S scheme for the bottom mass as it more appropriate for our low-energy regime.}
 
-These agree quite well with our data, differing by $7\%$ for the charm and $4\%$ for the bottom quark. In both cases our data gives a slightly higher quark mass.
+These agree quite well with our data, differing by $7\%$ for the charm and $4\%$ for the bottom quark. In both cases our data gives a slightly higher quark mass, however our results are within the limits of error .
 
 We postulate that the difference in mass is due to two main factors. Firstly, the experimental data used was of unknown source and was without errors, forbidding both research on them and meaningful error analysis on our own data. Fewer data points for \ccbar compared with \bbbar (3 against 6) also hinders our analysis as the charmonium spectrum may become nonlinear after the data points given.
 
@@ -229,11 +229,9 @@ It is worthy of note however how far the simple linear potential has brought us 
 
 \subsection{Prediction of Higher Excited State Masses}\label{ssec:highermasses}
 
-As the assumption of a linear potential has worked well, we may extrapolate the plot forwards in order to predict the masses of higher excited quarkonia states.
-
 The above discussion highlights the differences between our quark masses, $m_{c}$ and $m_{b}$, and those obtained by others~\cite{ref:pdg}. It is clear the linear potential is only an approximation, but we can use it to predict as yet undiscovered excited quarkonia states by extrapolating the data forwards in energy.
 
-Our extrapolation yielded the excited state mass predictions as given in table \ref{tab:mesonmasses}. Given the inability the report errors as discussed, these predictions must carry a significant uncertainty.
+Our extrapolation yielded the excited state mass predictions as given in table \ref{tab:mesonmasses} (predicted values are denoted with an asterisk `*'). Given the inability to report errors as discussed, these predictions must carry a significant uncertainty.
 
 
 
@@ -255,7 +253,7 @@ We arbitrarily choose the first root of the Airy function, bracketing between $x
 
 The bisection method took 27 iterations to reach the desired accuracy, whilst the other two algorithms both took 3 iterations. All three methods returned the same value of  $-2.3381074104$, which is the first root correct to 9 decimal places. This is within the accuracy of $\num{e-10}$ (see table \ref{tab:roots} for the $n$th root values).
 
-The bisection method is arguably the most basic root finding algorithm. It is guaranteed to find the root~\cite{ref:nr} so is very robust, but clearly converges slowly when compared to more intelligent methods. Ridder's method and secant method perform very similarly, most likely because they are both members of the same family of algorithms (false position).
+The bisection method is arguably the most basic root finding algorithm. It is guaranteed to find the root~\cite{ref:nr} so is very robust, but clearly converges slowly when compared to more intelligent methods. Ridder's method and secant method perform very similarly, most likely because they are both members of the same family of algorithms (the false position group).
 
 The simple form of the Airy function combined with the close bracketing of the roots allows very fast convergence to the root, however the three algorithms do not take equal times. Ridder's method took approximately twice as long as the secant method, which had an average runtime of $4\si{\milli\second}$ over 1000 runs, whilst the bisection method took nearly 6 times longer than the secant method.
 
@@ -269,7 +267,7 @@ The charm and bottom quark masses $m_{c} = 1.21\GeV$ and $m_{b} = 4.51\GeV$ were
 
 Both values are within an acceptable limit from the reference masses~\cite{ref:pdg} of $\sim 5\%$. These errors were attributed to the lack of experimental charmonium spectrum data and a naive linear binding potential. 
 
-Through comparisons of root finding algorithms (Ridder's, secant, and bisection methods), Ridder's and the secant method were found to resolve the roots to equal accuracy and precision. In addition, it was found that the secant method was twice as fast as Ridder's method. We recommend either method for future use, noting that for simple functions the complexity of Ridder's method can impact performance.
+Through comparisons of root finding algorithms (Ridder's, secant, and bisection methods), all methods were found to resolve the roots to equal accuracy and precision. In addition, it was found that the secant method was twice as fast as Ridder's method and three times as fast as the bisection method. We recommend either Ridder's or the secant method for future use, noting that for simple functions the complexity of Ridder's method can impact performance.
 
 
 
@@ -311,7 +309,7 @@ Through comparisons of root finding algorithms (Ridder's, secant, and bisection 
 			8 &       & & 11.54*\\
 			9 &       & & 11.75*\\
 		\end{tabular}
-		\caption{Quarkonium masses with $\ell = 0$ in \GeV~\cite{ref:gdaniell}. Those marked with an asterisk (*) are our predictions of higher excited state masses, as detailed in section \ref{ssec:highermasses}.}
+		\caption{Quarkonium masses with $\ell = 0$ in \GeV~\cite{ref:gdaniell}. Those marked with an asterisk `*' are our predictions of higher excited state masses, as detailed in section \ref{ssec:highermasses}.}
 		\label{tab:mesonmasses}
 	\end{center}  
 \end{table}
@@ -324,7 +322,7 @@ Through comparisons of root finding algorithms (Ridder's, secant, and bisection 
 	\hspace*{-0.15\textwidth}
 	\centering
 	\includegraphics[scale=1.3]{approximations}
-	\caption{The first, second, and third approximations of \Ai{x} as given in equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} respectively.}
+	\caption{The first, second, and third approximations of \Ai{x} as given in equations \ref{eqn:airyfirst}, \ref{eqn:airysecond}, and \ref{eqn:airythird} respectively. No one approximation is suitable for all $x$.}
 	\label{fig:approximations}
 \end{figure}
 
@@ -332,7 +330,7 @@ Through comparisons of root finding algorithms (Ridder's, secant, and bisection 
 	\hspace*{-0.15\textwidth}
 	\centering
 	\includegraphics[scale=1.3]{experimental-numerical}
-	\caption{Plots of two sets of data points. The blue is the line of best fit of the bottomonium excited masses, the red is the line of best fit of the charmonium excited masses. The black data points are the numerically obtained roots of \Ai{x} against the data of Daneill~\cite{ref:gdaniell}, whilst the red points are the extrapolated excited quarkonia masses (see section \ref{ssec:highermasses}).}
+	\caption{Plots of two sets of data points. The blue is the line of best fit of the bottomonium excited masses, the red is the line of best fit of the charmonium excited masses. The black data points are the numerically obtained roots of \Ai{x} against the data of Daniell~\cite{ref:gdaniell}, whilst the red points are the extrapolated excited quarkonia masses (see section \ref{ssec:highermasses}).}
 	\label{fig:data}
 \end{figure}
 
@@ -348,7 +346,6 @@ where $f(x)$ and $g(x)$ are infinite series given by
 f(x) &= 1 + \frac{1}{3!}x^{3} + \frac{1\times4}{6!}x^{6} + \frac{1\times4\times{7}}{9!}x^{9} + \dotsb,\label{eqn:airyfirstf}\\
 g(x) &= x + \frac{2}{4!}x^{4} + \frac{2\times5}{7!}x^{7} + \frac{2\times5\times{8}}{10!}x^{10} + \dotsb\label{eqn:airyfirstg}.
 \end{align}
-
 For larger $\mod{x}$ we may use the alternative approximations
 \[
 \Ai{x} \approx \frac{1}{2}\pi^{-1/2}x^{-1/4}e^{-\zeta} \sum\limits_{k=0} (-1)^{k}c_{k}\zeta^{-k},
@@ -374,7 +371,7 @@ with $c_{0} = 1$. Lastly
 
 \subsection{Recursive Representation}\label{app:recursion}
 
-After some algebra, the functions $f(x)$ and $g(x)$ in the first approximation of $\Ai{x}$ may be represented recursively. The $n$th term in each series are then
+After some algebra, the functions $f(x)$ and $g(x)$ in the first approximation of $\Ai{x}$ may be represented recursively (see section \ref{ssec:recursion}). The $n$th term in each series are then
 \begin{align*}
 f_{n}(x) &= \frac{f_{n-1}(x)}{(3n^{2} - n)} \frac{x^{3}}{3},\\ 
 g_{n}(x) &= \frac{g_{n-1}(x)}{(3n^{2} + n)} \frac{x^{3}}{3},
